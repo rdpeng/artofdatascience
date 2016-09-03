@@ -16,7 +16,7 @@ Imagine you wanted to conduct a survey of 20 people to ask them how much they'd 
 One of us (Roger) recently published a book titled [_R Programming for Data Science_](https://leanpub.com/rprogramming). Before the book was published, interested readers could submit their name and email address to the book's web site to be notified about the books publication. In addition, there was an option to specify how much they'd be willing to pay for the book. Below is a random sample of 20 responses from people who volunteered this information.
 
 ```{r}
-d <- read.csv("leanpub-rprogramming-interested-readers-20150809.csv", stringsAsFactors = FALSE)
+d <- read.csv("data/leanpub-rprogramming-interested-readers-20150403.csv", stringsAsFactors = FALSE)
 x0 <- d$Willing.to.pay
 set.seed(1)
 x <- sample(x0[!is.na(x0)], 20)
