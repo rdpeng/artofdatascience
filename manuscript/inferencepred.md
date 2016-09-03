@@ -20,21 +20,21 @@ The following example shows how different types of questions and corresponding m
 
 Below is a plot of the daily mortality from all causes for the years 2001--2005.
 
-![Daily Mortality in New York City, 2001--2005](images/inferencepred-unnamed-chunk-3-1.png) 
+![Daily Mortality in New York City, 2001--2005](images/inferencepred-unnamed-chunk-3-1.png)
 
 And here is a plot of 24-hour average levels of particulate matter with aerodynamic diameter less than or equal to 10 microns (PM10). 
 
-![Daily PM10 in New York City, 2001--2005](images/inferencepred-unnamed-chunk-4-1.png) 
+![Daily PM10 in New York City, 2001--2005](images/inferencepred-unnamed-chunk-4-1.png)
 
 Note that there are many fewer points on the plot above than there were on the plot of the mortality data. This is because PM10 is not measured everyday. Also note that there are negative values in the PM10 plot--this is because the PM10 data were mean-subtracted. In general, negative values of PM10 are not possible.
 
 ## Inferring an Association
 
-The first approach we will take will be to ask "Is there an association between daily 24-hour average PM10 levels and daily mortality?" This is an inferential question and we are attempting to estimate an association. In addition, for this question, we know there are a number of potential confounders that we will have to deal with.
+The first approach we will take will be to ask, "Is there an association between daily 24-hour average PM10 levels and daily mortality?" This is an inferential question and we are attempting to estimate an association. In addition, for this question, we know there are a number of potential confounders that we will have to deal with.
 
 Let's take a look at the bivariate association between PM10 and mortality. Here is a scatterplot of the two variables.
 
-![PM10 and Mortality in New York City](images/inferencepred-unnamed-chunk-5-1.png) 
+![PM10 and Mortality in New York City](images/inferencepred-unnamed-chunk-5-1.png)
 
 There doesn't appear to be much going on there, and a simple linear regression model of the log of daily mortality and PM10 seems to confirm that.
 
@@ -86,7 +86,7 @@ pm10tmean    0.00237049992 0.00065856022  3.5995189 3.837886e-04
 
 Notice that the `pm10tmean` coefficient is even bigger than it was in the previous model. There appears to still be an association between PM10 and mortality. The effect size is small, but we will discuss that later.
 
-Finally, another class of potential confounders includes other pollutants. Before we place blame on PM10 as a harmful pollutant, it's important that we examine whether there might be another pollutant that can explain what we're observing. NO2 is a good candidate because it share some of the same sources as PM10 and is known to be related to mortality. Let's see what happens when we include that in the model.
+Finally, another class of potential confounders includes other pollutants. Before we place blame on PM10 as a harmful pollutant, it's important that we examine whether there might be another pollutant that can explain what we're observing. NO2 is a good candidate because it shares some of the same sources as PM10 and is known to be related to mortality. Let's see what happens when we include that in the model.
 
 
 ```
@@ -106,22 +106,22 @@ Notice in the table of coefficients that the `no2tmean` coefficient is similar i
 
 Below is a plot of the PM10 coefficient from all four of the models that we tried.
 
-![Association Between PM10 and Mortality Under Different Models](images/inferencepred-unnamed-chunk-10-1.png) 
+![Association Between PM10 and Mortality Under Different Models](images/inferencepred-unnamed-chunk-10-1.png)
 
-With the exception of Model 1, which did not account for any potential confounders, there appears to be a positive association between PM10 and mortality across Models 2--4. What this means and what we should do about it depends on what our ultimate goal is and we do not discuss that in detail here. It's notable that the effect size is generally small, expecially compared to some of the other predictors in the model. However, it's also worth noting that presumably, everyone in New York City breaths, and so a small effect could have a large impact.
+With the exception of Model 1, which did not account for any potential confounders, there appears to be a positive association between PM10 and mortality across Models 2--4. What this means and what we should do about it depends on what our ultimate goal is and we do not discuss that in detail here. It's notable that the effect size is generally small, especially compared to some of the other predictors in the model. However, it's also worth noting that presumably, everyone in New York City breathes, and so a small effect could have a large impact.
 
 
 ## Predicting the Outcome
 
-Another strategy we could have taken is to ask "What best predicts mortality in New York City?" This is clearly a prediction question and we can use the data on hand to build a model. Here, we will use the [random forests](https://en.wikipedia.org/wiki/Random_forest) modeling strategy, which is a machine learning approach that performs well when there are a large number of predictors. One type of output we can obtain from the random forest procedure is a measure of *variable importance*. Roughly speaking, this measure indicates how important a given variable is to improving the prediction skill of the model. 
+Another strategy we could have taken is to ask, "What best predicts mortality in New York City?" This is clearly a prediction question and we can use the data on hand to build a model. Here, we will use the [random forests](https://en.wikipedia.org/wiki/Random_forest) modeling strategy, which is a machine learning approach that performs well when there are a large number of predictors. One type of output we can obtain from the random forest procedure is a measure of *variable importance*. Roughly speaking, this measure indicates how important a given variable is to improving the prediction skill of the model. 
 
 Below is a variable importance plot, which is obtained after fitting a random forest model. Larger values on the x-axis indicate greater importance.
 
-![Random Forest Variable Importance Plot for Predicting Mortality](images/inferencepred-unnamed-chunk-11-1.png) 
+![Random Forest Variable Importance Plot for Predicting Mortality](images/inferencepred-unnamed-chunk-11-1.png)
 
-Notice that the variable `pm10tmean` comes near the bottom of the list in terms of importance. That is because it does not contribute much to predicting the outcome, mortality. Recall in the previous section that the effect size appeared to be small, meaning that it didn't really explain much variability in mortality. Predictors like temperature and dew point temperature are more useful as predictors of daily mortality. Even NO2 is a better preditor than PM10.
+Notice that the variable `pm10tmean` comes near the bottom of the list in terms of importance. That is because it does not contribute much to predicting the outcome, mortality. Recall in the previous section that the effect size appeared to be small, meaning that it didn't really explain much variability in mortality. Predictors like temperature and dew point temperature are more useful as predictors of daily mortality. Even NO2 is a better predictor than PM10.
 
-However, just because PM10 is not a strong predictor of mortality doesn't mean that it does not have a relevant association with mortality. Given the tradeoffs that have to made when developing a prediction model, PM10 is not high on the list of predictors that we would include--we simply cannot include every predictor.
+However, just because PM10 is not a strong predictor of mortality doesn't mean that it does not have a relevant association with mortality. Given the tradeoffs that have to be made when developing a prediction model, PM10 is not high on the list of predictors that we would include--we simply cannot include every predictor.
 
 
 

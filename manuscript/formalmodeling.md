@@ -79,13 +79,13 @@ The model shown above could be thought of as the primary model. There is a key p
 
 Suppose we are selling a new product on the web and we are interested in whether buying advertisements on Facebook helps to increase the sales of that product. To start, we might initiate a 1-week pilot advertising campaign on Facebook and gauge the success of that campaign. If it were successful, we might continue to buy ads for the product. 
 
-One simple approach might be to track daily sales before, during, and after the advertising campaign (note that there are more precise ways to do this with tracking URLs and Google Analytics, but let's leave that aside for now). Put simply, if the campaign were a week long, we could look at the week before, the week during, and the week after to see if there were any shift in the daily sales. 
+One simple approach might be to track daily sales before, during, and after the advertising campaign (note that there are more precise ways to do this with tracking URLs and Google Analytics, but let's leave that aside for now). Put simply, if the campaign were a week long, we could look at the week before, the week during, and the week after to see if there were any shifts in the daily sales. 
 
 #### Expectations
 
 In an ideal world, the data might look something like this.
 
-![Hypothetical Advertising Campaign](images/formal-unnamed-chunk-2-1.png) 
+![Hypothetical Advertising Campaign](images/formal-unnamed-chunk-2-1.png)
 
 The tick marks on the x-axis indicate the period when the campaign was active. In this case, it's pretty obvious what effect the advertising campaign had on sales. Using just your eyes, it's possible to tell that the ad campaign added about $100 per day to total daily sales. Your primary model might look something like
 
@@ -131,7 +131,7 @@ Given this data and the primary model above, we'd estimate {$$}\beta{/$$} to be 
 
 Unfortunately, we rarely see data like the plot above. In reality, the effect sizes tend to be smaller, the noise tends to be higher, and there tend to be other factors at play. Typically, the data will look something like this.
 
-![More Realistic Daily Sales Data](images/formal-unnamed-chunk-5-1.png) 
+![More Realistic Daily Sales Data](images/formal-unnamed-chunk-5-1.png)
 
 While it does appear that there is an increase in sales during the period of the ad campaign (indicated by the tick marks again), it's a bit difficult to argue that the increased sales are *caused* by the campaign. Indeed, in the days before the campaign starts, there appears to be a slight increase in sales. Is that by chance or are there other trends going on in the background? 
 It's possible that there is a smooth background trend so that daily sales tend to go up and down throughout the month. Hence, even without the ad campaign in place, it's possible we would have seen an increase in sales anyway. The question now is whether the ad campaign increased daily sales *on top of* this existing background trend.
@@ -192,11 +192,11 @@ With prediction analyses, the precise type of analysis you do depends on the nat
 
 What's the ideal scenario in a prediction problem? Generally, what we want is a predictor, or a set of predictors, to produce *good separation* in the outcome. Here's an example of a single predictor producing reasonable separation in a binary outcome.
 
-![Ideal Classification Scenario](images/formal-unnamed-chunk-10-1.png) 
+![Ideal Classification Scenario](images/formal-unnamed-chunk-10-1.png)
 
 The outcome takes values of 0 and 1, while the predictor is continuous and takes values between roughly -2 and 2. The gray zone indicated in the plot highlights the area where values of the predictor can take on values of 0 or 1. To the right of the gray area you'll notice that the value of the outcome is always 1 and to the left of the gray area the value of the outcome is always 0. In prediction problems, it's this gray area where we have the most uncertainty about the outcome, given the value of the predictor. 
 
-The goal of most prediction problems to identify a set of predictors that minimizes the size of that gray area in the plot above. Counterintuitvely, it is common to identify predictors (particularly categorical ones) that *perfectly separate* the outcome, so that the gray area is reduced to zero. However, such situations typically indicate a degenerate problem that is not of much interest or even a mistake in the data. For example, a continuous variable that has been dichotomized will be perfectly separated by its continuous counterpart. It is a common mistake to include the continuous version as a predictor in the model and the dichotomous version as the outcome. In real-world data, you may see near perfect separation when measuring features or characteristics that are known to be linked to each other mechanistically or through some deterministic process. For example, if the outcome were an indicator of a person's potential to get ovarian cancer, then the person's sex might be a very good predictor, but it's not likely to be one of great interest to us.
+The goal of most prediction problems to identify a set of predictors that minimizes the size of that gray area in the plot above. Counterintuitively, it is common to identify predictors (particularly categorical ones) that *perfectly separate* the outcome, so that the gray area is reduced to zero. However, such situations typically indicate a degenerate problem that is not of much interest or even a mistake in the data. For example, a continuous variable that has been dichotomized will be perfectly separated by its continuous counterpart. It is a common mistake to include the continuous version as a predictor in the model and the dichotomous version as the outcome. In real-world data, you may see near perfect separation when measuring features or characteristics that are known to be linked to each other mechanistically or through some deterministic process. For example, if the outcome were an indicator of a person's potential to get ovarian cancer, then the person's sex might be a very good predictor, but it's not likely to be one of great interest to us.
 
 #### Real world data
 
@@ -208,7 +208,26 @@ The first thing we do for a prediction problem is to divide the data into a trai
 
 After fitting the model to the training dataset we can compute the predicted probabilities of being having "Good" credit from the test dataset. We plot those predicted probabilities on the x-axis along with each individuals true credit status on the y-axis below. (The y-axis coordinates have been randomly jittered to show some more detail.)
 
-![Prediction vs. Truth](images/formal-unnamed-chunk-12-1.png) 
+
+```
+1 package is needed for this model and is not installed. (pls). Would you like to try to install it now?
+```
+
+```
+Error in checkInstall(models$library): 
+```
+
+```
+Error in match.arg(type): 'arg' should be one of "response", "terms"
+```
+
+```
+Error in plot(pred[, 2], jitter(unclass(testing$Class) - 1, 0.1), ylim = c(-0.25, : object 'pred' not found
+```
+
+```
+Error in axis(2, 0:1, c("Bad", "Good")): plot.new has not been called yet
+```
 
 Here we can see that there isn't quite the good separation that we saw in the ideal scenario. Across the range of predicted probabilities, there are individuals with both "Good" and "Bad" credit. This suggests that the prediction algorithm that we have employed perhaps is having difficulty finding a good combination of features that can separate people with good and bad credit risk. 
 
@@ -216,32 +235,11 @@ We can compute some summary statistics about the prediction algorithm below.
 
 
 ```
-Confusion Matrix and Statistics
+Warning: 'newdata' had 250 rows but variables found have 100 rows
+```
 
-          Reference
-Prediction Bad Good
-      Bad    2    1
-      Good  73  174
-                                          
-               Accuracy : 0.704           
-                 95% CI : (0.6432, 0.7599)
-    No Information Rate : 0.7             
-    P-Value [Acc > NIR] : 0.4762          
-                                          
-                  Kappa : 0.0289          
- Mcnemar's Test P-Value : <2e-16          
-                                          
-            Sensitivity : 0.99429         
-            Specificity : 0.02667         
-         Pos Pred Value : 0.70445         
-         Neg Pred Value : 0.66667         
-             Prevalence : 0.70000         
-         Detection Rate : 0.69600         
-   Detection Prevalence : 0.98800         
-      Balanced Accuracy : 0.51048         
-                                          
-       'Positive' Class : Good            
-                                          
+```
+Error in confusionMatrix.default(data = pred.class, testing$Class, positive = "Good"): the data cannot have more levels than the reference
 ```
 
 We can see that the accuracy is about 70%, which is not great for most prediction algorithms. In particular, the algorithm's specificity is very poor, meaning that if you are a "Bad" credit risk, the probability that you will be classified as such is only about 2.6%. 
@@ -259,7 +257,7 @@ For prediction problems, deciding on the next step after initial model fitting c
 
 ## Summary
 
-Formal modeling is typically the most technical aspect of data analysis, and its purpose is to precisely lay out what is the goal of the analysis and to provide a rigorous framework for challenging your findings and for testing your assumptions. The approach that you take can vary depending primarily on whether your question is fundamentally about estimating an association develoing a good prediction. 
+Formal modeling is typically the most technical aspect of data analysis, and its purpose is to precisely lay out what is the goal of the analysis and to provide a rigorous framework for challenging your findings and for testing your assumptions. The approach that you take can vary depending primarily on whether your question is fundamentally about estimating an association or developing a good prediction. 
 
 
 

@@ -1,6 +1,5 @@
 ---
 output:
-  word_document: default
   html_document:
     keep_md: yes
 ---
@@ -70,7 +69,7 @@ For this chapter, we will consider the following question:
 
 > Do counties in the eastern United States have higher ozone levels than counties in the western United States?
 
-As a side note, one of the most important questions you can answer with an exploratory data analysis is "Do I have the right data to answer this question?" Often this question is difficult ot answer at first, but can become more clear as we sort through and look at the data.
+As a side note, one of the most important questions you can answer with an exploratory data analysis is "Do I have the right data to answer this question?" Often this question is difficult to answer at first, but can become more clear as we sort through and look at the data.
 
 ## Read in your data
 
@@ -167,7 +166,7 @@ Often, with just these simple maneuvers, you can identify potential problems wit
 
 ## Look at the Top and the Bottom of your Data
 
-It's often useful to look at the "beginning" and "end" of a dataset right after you check the packaging. This lets you know if the data were read in properly, things are properly formatted, and that everthing is there. If your data are time series data, then make sure the dates at the beginning and end of the dataset match what you expect the beginning and ending time period to be. 
+It's often useful to look at the "beginning" and "end" of a dataset right after you check the packaging. This lets you know if the data were read in properly, things are properly formatted, and that everything is there. If your data are time series data, then make sure the dates at the beginning and end of the dataset match what you expect the beginning and ending time period to be. 
 
 In R, you can peek at the top and bottom of the data with the `head()` and `tail()` functions.
 
@@ -231,13 +230,13 @@ We can take a look at which observations were measured at time "00:01".
 > filter(ozone, Time.Local == "13:14") %>% 
 +         select(State.Name, County.Name, Date.Local, 
 +                Time.Local, Sample.Measurement)
-Source: local data frame [2 x 5]
-
+# A tibble: 2 × 5
   State.Name County.Name Date.Local Time.Local
-       (chr)       (chr)      (chr)      (chr)
+       <chr>       <chr>      <chr>      <chr>
 1   New York    Franklin 2014-09-30      13:14
 2   New York    Franklin 2014-09-30      13:14
-Variables not shown: Sample.Measurement (dbl)
+# ... with 1 more variables:
+#   Sample.Measurement <dbl>
 ```
 
 We can see that it's a monitor in Franklin County, New York and that the measurements were taken on September 30, 2014. What if we just pulled all of the measurements taken at this monitor on this date?
@@ -410,7 +409,7 @@ Here's a simple [boxplot](https://en.wikipedia.org/wiki/Box_plot) of the ozone d
 > boxplot(Sample.Measurement ~ State.Name, ozone, range = 0, ylab = "Ozone level (ppm)")
 ```
 
-![Boxplot of ozone values by state](images/EDA-unnamed-chunk-16-1.png) 
+![Boxplot of ozone values by state](images/EDA-unnamed-chunk-16-1.png)
 
 From the plot, we can see that for most states the data are within a pretty narrow range below 0.05 ppm. However, for Puerto Rico, we see that the typical values are very low, except for some extremely high values. Similarly, Georgia and Hawaii appear to experience an occasional very high value. These might be worth exploring further, depending on your question.
 
@@ -434,7 +433,7 @@ First, we need to define what we mean by "eastern" and "western". The simplest t
 > text(-75, 30, "East")
 ```
 
-![Map of East and West Regions](images/EDA-unnamed-chunk-17-1.png) 
+![Map of East and West Regions](images/EDA-unnamed-chunk-17-1.png)
 
 Here we create a new variable called `region` that we use to indicate whether a given measurement in the dataset was recorded in the "east" or the "west". 
 
@@ -451,10 +450,9 @@ Now, we can make a simple summary of ozone levels in the east and west of the U.
 > group_by(ozone, region) %>%
 +         summarize(mean = mean(Sample.Measurement, na.rm = TRUE),
 +                   median = median(Sample.Measurement, na.rm = TRUE))
-Source: local data frame [2 x 3]
-
+# A tibble: 2 × 3
   region       mean median
-  (fctr)      (dbl)  (dbl)
+  <fctr>      <dbl>  <dbl>
 1   east 0.02995250  0.030
 2   west 0.03400735  0.035
 ```
@@ -468,7 +466,7 @@ We can also make a boxplot of the ozone in the two regions to see how they compa
 > boxplot(Sample.Measurement ~ region, ozone, range = 0)
 ```
 
-![Boxplot of Ozone for East and West Regions](images/EDA-unnamed-chunk-20-1.png) 
+![Boxplot of Ozone for East and West Regions](images/EDA-unnamed-chunk-20-1.png)
 
 We can see from the boxplots that the variability of ozone in the east tends to be a lot higher than the variability in the west.
 
@@ -487,10 +485,9 @@ Recall that previously we noticed that three states had some unusually high valu
 +         group_by(region) %>%
 +         summarize(mean = mean(Sample.Measurement, na.rm = TRUE),
 +                   median = median(Sample.Measurement, na.rm = TRUE))
-Source: local data frame [2 x 3]
-
+# A tibble: 2 × 3
   region       mean median
-  (fctr)      (dbl)  (dbl)
+  <fctr>      <dbl>  <dbl>
 1   east 0.03003692  0.030
 2   west 0.03406880  0.035
 ```
@@ -501,7 +498,7 @@ Indeed, it seems the pattern is the same even with those 3 states removed.
 
 In this chapter we've presented some simple steps to take when starting off on an exploratory analysis. The example analysis conducted in this chapter was far from perfect, but it got us thinking about the data and the question of interest. It also gave us a number of things to follow up on in case we continue to be interested in this question.
 
-At this point it's useful to consider a few followup questions.
+At this point it's useful to consider a few follow-up questions.
 
 1. **Do you have the right data?** Sometimes at the conclusion of an exploratory data analysis, the conclusion is that the dataset is not really appropriate for this question. In this case, the dataset seemed perfectly fine for answering the question of whether counties in the eastern U.S. have higher levels in the western U.S.
 

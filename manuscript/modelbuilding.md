@@ -5,13 +5,13 @@
 
 The objectives of this chapter are to describe what the concept of a model is more generally, to explain what the purpose of a model is with respect to a set of data, and last, to describe the process by which a data analyst creates, assesses, and refines a model.  In a very general sense, a model is something we construct to help us understand the real world. A common example is the use of an animal which mimics a human disease to help us understand, and hopefully, prevent and/or treat the disease. The same concept applies to a set of data--presumably you are using the data to understand the real world.  
 
-In the world of politics a pollster has a dataset on a sample of likely voters and the pollster's job is to use this sample to predict the election outcome.  The data analyst uses the polling data to construct a model to predict what will happen on election day. The process of building a model involves imposing a specific structure on the data and creating a summary of the data. In the polling data example, you may have thousands of observations, so the model is a mathematical equation that reflects the shape or pattern of the data, and the equation allows you to summarize the thousands of observations with, for example, one number, which might be the percentage of voters who will vote for your candidate.  Right now, these last concepts may be a bit fuzzy, but they will become much clearer as you read on.
+In the world of politics a pollster has a dataset on a sample of likely voters and the pollster's job is to use this sample to predict the election outcome.  The data analyst uses the polling data to construct a model to predict what will happen on Election Day. The process of building a model involves imposing a specific structure on the data and creating a summary of the data. In the polling data example, you may have thousands of observations, so the model is a mathematical equation that reflects the shape or pattern of the data, and the equation allows you to summarize the thousands of observations with, for example, one number, which might be the percentage of voters who will vote for your candidate.  Right now, these last concepts may be a bit fuzzy, but they will become much clearer as you read on.
 
 A statistical model serves two key purposes in a data analysis, which are to provide a *quantitative summary* of your data and to impose a specific *structure* on the population from which the data were sampled. It's sometimes helpful to understand what a model is and why it can be useful through the illustration of extreme examples. The trivial "model" is simply **no model at all**. 
 
 Imagine you wanted to conduct a survey of 20 people to ask them how much they'd be willing to spend on a product you're developing. What is the goal of this survey? Presumably, if you're spending time and money developing a new product, you believe that there is a large *population* of people out there who are willing to buy this product. However, it's far too costly and complicated to ask everyone in that population what they'd be willing to pay. So you take a *sample* from that population to get a sense of what the population would pay.
 
-One of us (Roger) recently published a book titled [_R Programming for Data Science_](https://leanpub.com/rprogramming). Before the book was published, interested readers could submit their name and email address to the book's web site to be notified about the books publication. In addition, there was an option to specify how much they'd be willing to pay for the book. Below is a random sample of 20 response from people who volunteered this information.
+One of us (Roger) recently published a book titled [_R Programming for Data Science_](https://leanpub.com/rprogramming). Before the book was published, interested readers could submit their name and email address to the book's web site to be notified about the books publication. In addition, there was an option to specify how much they'd be willing to pay for the book. Below is a random sample of 20 responses from people who volunteered this information.
 
 
 ```
@@ -39,7 +39,7 @@ Take the data that we described in the previous section---the amount of money 20
 
 To apply the Normal model to this dataset, we just need to calculate the mean and standard deviation. In this case, the mean is $17.2 and the standard deviation is $10.39. Given those parameters, our expectation under the Normal model is that the distribution of prices that people are willing to pay looks something like this.
 
-![Normal Model for Prices](images/model-unnamed-chunk-3-1.png) 
+![Normal Model for Prices](images/model-unnamed-chunk-3-1.png)
 
 
 According to the model, about 68% of the population would be willing to pay somewhere between $6.81 and $27.59 for this new product. Whether that is useful information or not depends on the specifics of the situation, which we will gloss over for the moment.
@@ -73,7 +73,7 @@ To begin with we can make some pictures, like a histogram of the data. But befor
 
 In the picture below, I've simulated 20 data points from a Normal distribution and overlaid the theoretical Normal curve on top of the histogram.
 
-![Histogram of Simulated Normal Data](images/model-unnamed-chunk-5-1.png) 
+![Histogram of Simulated Normal Data](images/model-unnamed-chunk-5-1.png)
 
 Notice how closely the histogram bars and the blue curve match. This is what we want to see with the data. If we see this, then we might conclude that the Normal distribution is a **good statistical model for the data**. 
 
@@ -88,7 +88,7 @@ So we have some evidence already that the Normal model may not be a *perfect* mo
 
 Here is a histogram of the data from the sample of 20 respondents. On top of the histogram, I've overlaid the Normal curve on top of the histogram of the 20 data points of the amount people say they are willing to pay for the book.
 
-![Histogram of Price Survey Data](images/model-unnamed-chunk-6-1.png) 
+![Histogram of Price Survey Data](images/model-unnamed-chunk-6-1.png)
 
 What we would *expect* is that the histogram and the blue line should roughly follow each other. How do the model and reality compare?
 
@@ -100,7 +100,7 @@ So far the data suggest that the Normal model isn't really a very good represent
 
 ## Reacting to Data: Refining Our Expectations
 
-Okay, so the model and the data don't match very well, as was indicated by the histogram above. So what do do? Well, we can either
+Okay, so the model and the data don't match very well, as was indicated by the histogram above. So what to do? Well, we can either
 
 1. Get a different model; or
 
@@ -118,9 +118,9 @@ Now, we should go back to the top of our iteration and do the following:
 
 3. Refine our expectations, given what the data show
 
-For your reference, here is a histgram of the same data with the Gamma distribution (estimated using the data) overlaid.
+For your reference, here is a histogram of the same data with the Gamma distribution (estimated using the data) overlaid.
 
-![Price Survey Data with Gamma Distribution](images/model-unnamed-chunk-7-1.png) 
+![Price Survey Data with Gamma Distribution](images/model-unnamed-chunk-7-1.png)
 
 How do the data match your expectations now?
 
@@ -159,9 +159,9 @@ The simplest model that we might formulate for characterizing the relationship b
 
 We can simulate some data to make a *fake picture* of what the relationship between ozone and temperature should look like under a linear model. Here's a simple linear relationship along with the simulated data in a scatterplot.
 
-![Simulated Data with a Linear Model](images/model-unnamed-chunk-10-1.png) 
+![Simulated Data with a Linear Model](images/model-unnamed-chunk-10-1.png)
 
-Note that if you choose any point on the blue line, there are roughly the same number of points above the line as there are below the line (this is also referred to as unbiased errors). Also, the points on the scatterplot appear to increase linearly as you move towards the right on the x-axis, even if there is a quite a bit of noise/scatter along the line.
+Note that if you choose any point on the blue line, there is roughly the same number of points above the line as there are below the line (this is also referred to as unbiased errors). Also, the points on the scatterplot appear to increase linearly as you move towards the right on the x-axis, even if there is a quite a bit of noise/scatter along the line.
 
 If we are right about our linear model, and that is the model that characterizes the data and the relationship between ozone and temperature, then roughly speaking, this is the picture we should see when we plot the data.
 
@@ -171,7 +171,7 @@ If we are right about our linear model, and that is the model that characterizes
 
 Here is the picture of the actual ozone and temperature data in New York City for the year 1999. On top of the scatterplot of the data, we've plotted the fitted linear regression line estimated using the data.
 
-![Linear Model for Ozone and Temperature](images/model-unnamed-chunk-11-1.png) 
+![Linear Model for Ozone and Temperature](images/model-unnamed-chunk-11-1.png)
 
 How does this picture compare to the picture that you were expecting to see?
 
@@ -186,9 +186,9 @@ Our simple linear regression model appears to capture the general increasing rel
 
 From the picture above, it appears that the relationship between temperature and ozone may not be linear. Indeed, the data points suggest that maybe the relationship is flat up until about 70 degrees and then ozone levels increase rapidly with temperature after that. This suggest a *nonlinear* relationship between temperature and ozone. 
 
-The easiest way we can capture this revised expectation is with a smoother, in this case a loess smoother.
+The easiest way we can capture this revised expectation is with a smoother, in this case, a loess smoother.
 
-![Loess Smoother for Ozone and Temperature](images/model-unnamed-chunk-12-1.png) 
+![Loess Smoother for Ozone and Temperature](images/model-unnamed-chunk-12-1.png)
 
 This plot shows a different picture--the relationship is slowly increasing up until about 75 degrees, and then sharply increases afterwards. Around 90 degrees, there's a suggestion that the relationship levels off again. 
 
@@ -209,7 +209,7 @@ Ultimately, you might be able to iterate over and over again. Every answer will 
 
 Iterative data analysis will eventually begin to raise questions that simply cannot be answered with the data at hand. For example, in the ozone/temperature analysis, the modeling suggested that there isn't just a simple relationship between the two variables, that it may be nonlinear. But the data can't explain precisely why such a nonlinear relationship might exist (although they can suggest certain hypotheses). Also, you may need to collect additional data to determine whether what you observe is real or simply a fluke or statistical accident. Either way, you need to go back out into the world and collect new data. More data analysis is unlikely to bring these answers. 
 
-Another situation in which you may find yourself seeking out more data is when you've actually completed the data analysis and come to satisfactory results, usually some interesting finding. Then, it can be very important to try to *replicate* whatever you've found using a different, possibly independent, dataset. In the ozone/temperature example, if we concluded that there were a nonlinear relationship between temperature and ozone, our conclusion might be made more powerful if we could show that this relationship were present in other cities besides New York. Such independent confirmation can increase the strength of evidence and can play a powerful role in decision making. 
+Another situation in which you may find yourself seeking out more data is when you've actually completed the data analysis and come to satisfactory results, usually some interesting finding. Then, it can be very important to try to *replicate* whatever you've found using a different, possibly independent, dataset. In the ozone/temperature example, if we concluded that there were a nonlinear relationship between temperature and ozone, our conclusion might be made more powerful if we could show that this relationship were present in other cities besides New York. Such independent confirmation can increase the strength of evidence and can play a powerful role in decision-making. 
 
 
 ### Do you have enough evidence to make a decision?
@@ -223,7 +223,7 @@ That's why it's important to always keep in mind the *purpose* of the data analy
 
 Another way to ask this question is "Do the results make some sort of sense?" Often, you can answer this question by searching available literature in your area or see if other people inside or outside your organization have come to a similar conclusion. If your analysis findings hew closely to what others have found, that may be a good thing, but it's not the only desirable outcome. Findings that are at odds with past results may lead down a path of new discovery. In either case, it's often difficult to come to the right answer without further investigation.
 
-You have to be a bit careful with how you answer this question. Often, especially with very large and complex datasets, it's easy to come to a result that "makes sense" and conforms to our understanding of how a given process *should* work. In this situation, it's important to be hyper-critical of our findings and to challenge them as much as possible. In our experience, when the data very closely match our expectation, it can be a result of either mistakes or misunderstandings in the analysis or in the data collection process. It is critical to question every aspect of the analysis process to make sure everything was done appropriately.
+You have to be a bit careful with how you answer this question. Often, especially with very large and complex datasets, it's easy to come to a result that "makes sense" and conforms to our understanding of how a given process *should* work. In this situation, it's important to be hypercritical of our findings and to challenge them as much as possible. In our experience, when the data very closely match our expectation, it can be a result of either mistakes or misunderstandings in the analysis or in the data collection process. It is critical to question every aspect of the analysis process to make sure everything was done appropriately.
 
 If your results do *not* make sense, or the data do not match your expectation, then this is where things get interesting. You may simply have done something incorrectly in the analysis or the data collection. Chances are, that's exactly what happened. For every diamond in the rough, there are 99 pieces of coal. However, on the off-chance that you've discovered something unusual that others have not yet seen, you'll need to (a) make sure that the analysis was done properly and (b) replicate your findings in another dataset. Surprising results are usually met with much scrutiny and you'll need to be prepared to rigorously defend your work. 
 

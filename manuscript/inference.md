@@ -40,7 +40,7 @@ Consider this group of penguins below (because penguins are awesome), each weari
 ![Population of Penguins with Turquoise and Purple Hats](images/penguin3.png)
 
 
-Now suppose you wanted to know how what proportion of the *population* of penguins wears turqoise hats. But there's a catch--you don't have the time, money, or ability to take care of 10 penguins. Who does? You can only afford to take care of three penguins, so you randomly sample three of these 10 penguins. 
+Now suppose you wanted to know how what proportion of the *population* of penguins wears turquoise hats. But there's a catch--you don't have the time, money, or ability to take care of 10 penguins. Who does? You can only afford to take care of three penguins, so you randomly sample three of these 10 penguins. 
 
 ![Sample of 3 Penguins from Population](images/penguin2.png)
 
@@ -50,7 +50,7 @@ The key point is that you never observe the full population of penguins. Now wha
 
 At this point an easy question to ask is "What proportion of the penguins *in my dataset* are wearing turquoise hats?". From the picture above, it's clear that 1/3 of the penguins are wearing turquoise hats. We have *no uncertainty* about that proportion because the data are sitting right in front of us.
 
-The hard question to ask is "Based on the data I have, what proportion of the penguins in the *original population* are wearing turqoise hats?" At this point, we just have our sample of three penguins and do not observe the full population. What can we do? We need to make an *inference* about the population using the data we have on hand. 
+The hard question to ask is "Based on the data I have, what proportion of the penguins in the *original population* are wearing turquoise hats?" At this point, we just have our sample of three penguins and do not observe the full population. What can we do? We need to make an *inference* about the population using the data we have on hand. 
 
 The three things that we need to do to make an inference are:
 
@@ -110,14 +110,14 @@ If we believe that Apple and MusicWatch were measuring the same thing in their a
 
 3. **Measurement differences**. One thing we don't know is how either MusicWatch or Apple defined "still using the service". You could imagine a variety of ways to determine whether a person was still using the service. You could ask "Have you used it in the last week?" or perhaps "Did you use it yesterday?" Responses to these questions would be quite different and would likely lead to different overall percentages of usage.
 
-4. **Respondents are not independent**. It's possible that the survey respondents are not independent of each other. This would primiarily affect the uncertainty about the estimate, making it larger than we might expect if the respondents were all independent. However, since we do not know what MusicWatch's uncertainty about their estimate was in the first place, it's difficult to tell if dependence between respondents could play a role.
+4. **Respondents are not independent**. It's possible that the survey respondents are not independent of each other. This would primarily affect the uncertainty about the estimate, making it larger than we might expect if the respondents were all independent. However, since we do not know what MusicWatch's uncertainty about their estimate was in the first place, it's difficult to tell if dependence between respondents could play a role.
 
 
 
 
 ## Populations Come in Many Forms
 
-There are a variety of strategies that one can employ to setup a formal framework for making inferential statements. Often, there is literally a population of units (e.g. people, penguins, etc.) about which you want to make statements. In those cases it's clear where the uncertainty comes from (sampling from the population) and what exactly it is you're trying to estimate (some feature of the population). However, in other applications it might not be so clear what exactly is the population and what exactly it is you're trying to estimate. In those cases, you'll have to be more explicity about defining the population because there may be more than one possibility.
+There are a variety of strategies that one can employ to setup a formal framework for making inferential statements. Often, there is literally a population of units (e.g. people, penguins, etc.) about which you want to make statements. In those cases it's clear where the uncertainty comes from (sampling from the population) and what exactly it is you're trying to estimate (some feature of the population). However, in other applications it might not be so clear what exactly is the population and what exactly it is you're trying to estimate. In those cases, you'll have to be more explicit about defining the population because there may be more than one possibility.
 
 ### Time series 
 
@@ -137,7 +137,7 @@ Natural phenomena, such as earthquakes, fires, hurricanes, weather-related pheno
 
 One technique that is always possible, but not commonly used, is to treat the dataset as a population. In this case, there is no inference because there's no sampling. Because your dataset *is* the population, there's no uncertainty about any characteristic of the population. This may not sound like a useful strategy but there are circumstances where it can be used to answer important questions. In particular, there are times where we do not care about things outside the dataset. 
 
-For example, it is common in organizations to analyze salary data to make sure that women are not being paid less than men for comparable work or that there are not major imbalances between employees of different ethnic groups. In this setting, differences in salaries between different groups can be calculated in the dataset and one can see if the differences are large enough to be of concern. The point is that the data directly answer a question of interest, which is "Are there large salarly differences that need to be addressed?" In this case there's no need to make an inference about employees outside the organization (there are none, by definition) or to employees at other organizations over which you would not have any control. The dataset is the population and answers to any question regarding the population are in that dataset.
+For example, it is common in organizations to analyze salary data to make sure that women are not being paid less than men for comparable work or that there are not major imbalances between employees of different ethnic groups. In this setting, differences in salaries between different groups can be calculated in the dataset and one can see if the differences are large enough to be of concern. The point is that the data directly answer a question of interest, which is "Are there large salary differences that need to be addressed?" In this case there's no need to make an inference about employees outside the organization (there are none, by definition) or to employees at other organizations over which you would not have any control. The dataset is the population and answers to any question regarding the population are in that dataset.
 
 
 
