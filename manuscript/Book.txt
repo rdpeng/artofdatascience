@@ -1,0 +1,15 @@
+frontmatter.txt
+preface.md
+mainmatter.txt
+epicycles.md
+StatingandRefiningTheQuestion.md
+EDA.md
+modelbuilding.md
+inference.md
+formalmodeling.md
+inferencepred.md
+Interpreting_Your_Results.md
+communication.md
+conclusion.md
+backmatter.txt
+about.md

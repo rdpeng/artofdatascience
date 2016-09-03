@@ -1,0 +1,9 @@
+## Table for Epicycles of Analysis
+
+|    | Set Expectations | Collect Information | Revise Expectations |
+|:---|:---------------- |:------------------- |:------------------- |
+| **Question** | Question is of interest to audience | Literature Search/Experts | Sharpen question |
+| **EDA** | Data are appropriate for question | Make exploratory plots of data | Refine question or collect more data |
+| **Formal Modeling** | Primary model answers question | Fit secondary models, sensitivity analysis | Revise formal model to include more predictors |
+| **Interpretation** | Interpretation of analyses provides a specific & meaningful answer to the question | Interpret totality of analyses with focus on effect sizes & uncertainty | Revise EDA and/or models to provide specific & interpretable answer |
+| **Communication** |Process & results of analysis are understood, complete & meaningful to audience |Seek feedback | Revise analyses or approach to presentation |
