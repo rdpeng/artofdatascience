@@ -7,8 +7,6 @@ local({
         u <- sapply(m, length) > 0
         pkgs <- sapply(m[u], function(x) x[2]) %>% unique
 
-        writeLines(pkgs, "_R_package_list.txt")
-        
         int <- installed.packages()[, 1]
         need <- setdiff(pkgs, int)
         if(length(need) > 0L) {
