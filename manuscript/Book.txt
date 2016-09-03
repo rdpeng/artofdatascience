@@ -1,6 +1,4 @@
-frontmatter.txt
 preface.md
-mainmatter.txt
 epicycles.md
 StatingandRefiningTheQuestion.md
 EDA.md
