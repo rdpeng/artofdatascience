@@ -1,10 +1,10 @@
 # Inference vs. Prediction: Implications for Modeling Strategy
 
-```{r,message=FALSE,echo=FALSE}
+```{r,message=FALSE,warning=FALSE,echo=FALSE}
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, 
                       comment = NA, fig.path = "images/inferencepred-")
-library(dplyr, warn.conflicts = FALSE)
-library(ggplot2, quiet = TRUE)
+library(dplyr)
+library(ggplot2)
 ```
 
 Understanding whether you're answering an inferential question versus a prediction question is an important concept because the type of question you're answering can greatly influence the modeling strategy you pursue. If you do not clearly understand which type of question you are asking, you may end up using the wrong type of modeling approach and ultimately make the wrong conclusions from your data. The purpose of this chapter is to show you what can happen when you confuse one question for another.
