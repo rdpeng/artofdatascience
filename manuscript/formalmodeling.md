@@ -208,26 +208,7 @@ The first thing we do for a prediction problem is to divide the data into a trai
 
 After fitting the model to the training dataset we can compute the predicted probabilities of being having "Good" credit from the test dataset. We plot those predicted probabilities on the x-axis along with each individuals true credit status on the y-axis below. (The y-axis coordinates have been randomly jittered to show some more detail.)
 
-
-```
-1 package is needed for this model and is not installed. (pls). Would you like to try to install it now?
-```
-
-```
-Error in checkInstall(models$library): 
-```
-
-```
-Error in match.arg(type): 'arg' should be one of "response", "terms"
-```
-
-```
-Error in plot(pred[, 2], jitter(unclass(testing$Class) - 1, 0.1), ylim = c(-0.25, : object 'pred' not found
-```
-
-```
-Error in axis(2, 0:1, c("Bad", "Good")): plot.new has not been called yet
-```
+![Prediction vs. Truth](images/formal-unnamed-chunk-12-1.png)
 
 Here we can see that there isn't quite the good separation that we saw in the ideal scenario. Across the range of predicted probabilities, there are individuals with both "Good" and "Bad" credit. This suggests that the prediction algorithm that we have employed perhaps is having difficulty finding a good combination of features that can separate people with good and bad credit risk. 
 
@@ -235,11 +216,32 @@ We can compute some summary statistics about the prediction algorithm below.
 
 
 ```
-Warning: 'newdata' had 250 rows but variables found have 100 rows
-```
+Confusion Matrix and Statistics
 
-```
-Error in confusionMatrix.default(data = pred.class, testing$Class, positive = "Good"): the data cannot have more levels than the reference
+          Reference
+Prediction Bad Good
+      Bad    2    1
+      Good  73  174
+                                          
+               Accuracy : 0.704           
+                 95% CI : (0.6432, 0.7599)
+    No Information Rate : 0.7             
+    P-Value [Acc > NIR] : 0.4762          
+                                          
+                  Kappa : 0.0289          
+ Mcnemar's Test P-Value : <2e-16          
+                                          
+            Sensitivity : 0.99429         
+            Specificity : 0.02667         
+         Pos Pred Value : 0.70445         
+         Neg Pred Value : 0.66667         
+             Prevalence : 0.70000         
+         Detection Rate : 0.69600         
+   Detection Prevalence : 0.98800         
+      Balanced Accuracy : 0.51048         
+                                          
+       'Positive' Class : Good            
+                                          
 ```
 
 We can see that the accuracy is about 70%, which is not great for most prediction algorithms. In particular, the algorithm's specificity is very poor, meaning that if you are a "Bad" credit risk, the probability that you will be classified as such is only about 2.6%. 
