@@ -4,6 +4,8 @@
 knitr::opts_chunk$set(echo = FALSE, fig.path = "images/formal-", comment = NA)
 ```
 
+> Formal models are useful and often almost, if not quite, essential for incisive thinking. ---D. R. Cox
+
 This chapter is typically the part of the statistics textbook or course where people tend to hit a wall. In particular, there's often a lot of math. Math is good, but gratuitous math is not good. We are not in favor of that.
 
 It's important to realize that often it is useful to represent a model using mathematical notation because it is a compact notation and can be easy to interpret once you get used to it. Also, writing down a statistical model using mathematical notation, as opposed to just natural language, forces you to be precise in your description of the model and in your statement of what you are trying to accomplish, such as estimating a parameter. 
