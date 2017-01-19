@@ -1,0 +1,6 @@
+book_filename: artofdatascience
+chapter_name: "Chapter "
+repo: https://github.com/rdpeng/artofdatascience/
+output_dir: _book
+rmd_files: ["index.Rmd", "epicycles.md", "StatingandRefiningTheQuestion.Rmd", "EDA.Rmd", "modelbuilding.Rmd", "inference.Rmd", "formalmodeling.Rmd", "inferencepred.Rmd", "Interpreting_Your_Results.Rmd", "communication.Rmd", "about.md"]
+new_session: yes
