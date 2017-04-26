@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>The Art of Data Science</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="The book covers R software development for building data science tools. As the field of data science evolves, it has become clear that software development skills are essential for producing useful data science results and products. You will obtain rigorous training in the R language, including the skills for handling complex data, building R packages and developing custom data visualizations. You will learn modern software development practices to build tools that are highly reusable, modular, and suitable for use in a team-based environment or a community of developers.">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+
+  <meta property="og:title" content="The Art of Data Science" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://github.com/rdpeng/artofdatascience" />
+  
+  <meta property="og:description" content="The book covers R software development for building data science tools. As the field of data science evolves, it has become clear that software development skills are essential for producing useful data science results and products. You will obtain rigorous training in the R language, including the skills for handling complex data, building R packages and developing custom data visualizations. You will learn modern software development practices to build tools that are highly reusable, modular, and suitable for use in a team-based environment or a community of developers." />
+  <meta name="github-repo" content="rdpeng/artofdatascience" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="The Art of Data Science" />
+  
+  <meta name="twitter:description" content="The book covers R software development for building data science tools. As the field of data science evolves, it has become clear that software development skills are essential for producing useful data science results and products. You will obtain rigorous training in the R language, including the skills for handling complex data, building R packages and developing custom data visualizations. You will learn modern software development practices to build tools that are highly reusable, modular, and suitable for use in a team-based environment or a community of developers." />
+  
+
+<meta name="author" content="Roger D. Peng and Elizabeth Matsui">
+
+
+<meta name="date" content="2017-01-20">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="inference-vs-prediction-implications-for-modeling-strategy.html">
+<link rel="next" href="inferring-an-association.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">The Art of Data Science</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Data Analysis as Art</a></li>
+<li class="chapter" data-level="2" data-path="epicycles-of-analysis.html"><a href="epicycles-of-analysis.html"><i class="fa fa-check"></i><b>2</b> Epicycles of Analysis</a><ul>
+<li class="chapter" data-level="2.1" data-path="setting-the-scene.html"><a href="setting-the-scene.html"><i class="fa fa-check"></i><b>2.1</b> Setting the Scene</a></li>
+<li class="chapter" data-level="2.2" data-path="epicycle-of-analysis.html"><a href="epicycle-of-analysis.html"><i class="fa fa-check"></i><b>2.2</b> Epicycle of Analysis</a></li>
+<li class="chapter" data-level="2.3" data-path="setting-expectations.html"><a href="setting-expectations.html"><i class="fa fa-check"></i><b>2.3</b> Setting Expectations</a></li>
+<li class="chapter" data-level="2.4" data-path="collecting-information.html"><a href="collecting-information.html"><i class="fa fa-check"></i><b>2.4</b> Collecting Information</a></li>
+<li class="chapter" data-level="2.5" data-path="comparing-expectations-to-data.html"><a href="comparing-expectations-to-data.html"><i class="fa fa-check"></i><b>2.5</b> Comparing Expectations to Data</a></li>
+<li class="chapter" data-level="2.6" data-path="applying-the-epicycle-of-analysis-process.html"><a href="applying-the-epicycle-of-analysis-process.html"><i class="fa fa-check"></i><b>2.6</b> Applying the Epicycle of Analysis Process</a><ul>
+<li class="chapter" data-level="2.6.1" data-path="applying-the-epicycle-of-analysis-process.html"><a href="applying-the-epicycle-of-analysis-process.html#example-asthma-prevalence-in-the-u.s."><i class="fa fa-check"></i><b>2.6.1</b> Example: Asthma prevalence in the U.S.</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chapter-question.html"><a href="chapter-question.html"><i class="fa fa-check"></i><b>3</b> Stating and Refining the Question</a><ul>
+<li class="chapter" data-level="3.1" data-path="types-of-questions.html"><a href="types-of-questions.html"><i class="fa fa-check"></i><b>3.1</b> Types of Questions</a></li>
+<li class="chapter" data-level="3.2" data-path="applying-the-epicycle-to-stating-and-refining-your-question.html"><a href="applying-the-epicycle-to-stating-and-refining-your-question.html"><i class="fa fa-check"></i><b>3.2</b> Applying the Epicycle to Stating and Refining Your Question</a></li>
+<li class="chapter" data-level="3.3" data-path="characteristics-of-a-good-question.html"><a href="characteristics-of-a-good-question.html"><i class="fa fa-check"></i><b>3.3</b> Characteristics of a Good Question</a></li>
+<li class="chapter" data-level="3.4" data-path="translating-a-question-into-a-data-problem.html"><a href="translating-a-question-into-a-data-problem.html"><i class="fa fa-check"></i><b>3.4</b> Translating a Question into a Data Problem</a></li>
+<li class="chapter" data-level="3.5" data-path="case-study.html"><a href="case-study.html"><i class="fa fa-check"></i><b>3.5</b> Case Study</a></li>
+<li class="chapter" data-level="3.6" data-path="concluding-thoughts.html"><a href="concluding-thoughts.html"><i class="fa fa-check"></i><b>3.6</b> Concluding Thoughts</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html"><i class="fa fa-check"></i><b>4</b> Exploratory Data Analysis</a><ul>
+<li class="chapter" data-level="4.1" data-path="exploratory-data-analysis-checklist-a-case-study.html"><a href="exploratory-data-analysis-checklist-a-case-study.html"><i class="fa fa-check"></i><b>4.1</b> Exploratory Data Analysis Checklist: A Case Study</a></li>
+<li class="chapter" data-level="4.2" data-path="formulate-your-question.html"><a href="formulate-your-question.html"><i class="fa fa-check"></i><b>4.2</b> Formulate your question</a></li>
+<li class="chapter" data-level="4.3" data-path="read-in-your-data.html"><a href="read-in-your-data.html"><i class="fa fa-check"></i><b>4.3</b> Read in your data</a></li>
+<li class="chapter" data-level="4.4" data-path="check-the-packaging.html"><a href="check-the-packaging.html"><i class="fa fa-check"></i><b>4.4</b> Check the Packaging</a></li>
+<li class="chapter" data-level="4.5" data-path="look-at-the-top-and-the-bottom-of-your-data.html"><a href="look-at-the-top-and-the-bottom-of-your-data.html"><i class="fa fa-check"></i><b>4.5</b> Look at the Top and the Bottom of your Data</a></li>
+<li class="chapter" data-level="4.6" data-path="abc-always-be-checking-your-ns.html"><a href="abc-always-be-checking-your-ns.html"><i class="fa fa-check"></i><b>4.6</b> ABC: Always be Checking Your “n”s</a></li>
+<li class="chapter" data-level="4.7" data-path="validate-with-at-least-one-external-data-source.html"><a href="validate-with-at-least-one-external-data-source.html"><i class="fa fa-check"></i><b>4.7</b> Validate With at Least One External Data Source</a></li>
+<li class="chapter" data-level="4.8" data-path="make-a-plot.html"><a href="make-a-plot.html"><i class="fa fa-check"></i><b>4.8</b> Make a Plot</a></li>
+<li class="chapter" data-level="4.9" data-path="try-the-easy-solution-first.html"><a href="try-the-easy-solution-first.html"><i class="fa fa-check"></i><b>4.9</b> Try the Easy Solution First</a><ul>
+<li class="chapter" data-level="4.9.1" data-path="try-the-easy-solution-first.html"><a href="try-the-easy-solution-first.html#challenge-your-solution"><i class="fa fa-check"></i><b>4.9.1</b> Challenge Your Solution</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="follow-up-questions.html"><a href="follow-up-questions.html"><i class="fa fa-check"></i><b>4.10</b> Follow-up Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="using-models-to-explore-your-data.html"><a href="using-models-to-explore-your-data.html"><i class="fa fa-check"></i><b>5</b> Using Models to Explore Your Data</a><ul>
+<li class="chapter" data-level="5.1" data-path="models-as-expectations.html"><a href="models-as-expectations.html"><i class="fa fa-check"></i><b>5.1</b> Models as Expectations</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="models-as-expectations.html"><a href="models-as-expectations.html#applying-the-normal-model"><i class="fa fa-check"></i><b>5.1.1</b> Applying the normal model</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="comparing-model-expectations-to-reality.html"><a href="comparing-model-expectations-to-reality.html"><i class="fa fa-check"></i><b>5.2</b> Comparing Model Expectations to Reality</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="comparing-model-expectations-to-reality.html"><a href="comparing-model-expectations-to-reality.html#drawing-a-fake-picture"><i class="fa fa-check"></i><b>5.2.1</b> Drawing a fake picture</a></li>
+<li class="chapter" data-level="5.2.2" data-path="comparing-model-expectations-to-reality.html"><a href="comparing-model-expectations-to-reality.html#the-real-picture"><i class="fa fa-check"></i><b>5.2.2</b> The real picture</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="reacting-to-data-refining-our-expectations.html"><a href="reacting-to-data-refining-our-expectations.html"><i class="fa fa-check"></i><b>5.3</b> Reacting to Data: Refining Our Expectations</a></li>
+<li class="chapter" data-level="5.4" data-path="examining-linear-relationships.html"><a href="examining-linear-relationships.html"><i class="fa fa-check"></i><b>5.4</b> Examining Linear Relationships</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="examining-linear-relationships.html"><a href="examining-linear-relationships.html#expectations"><i class="fa fa-check"></i><b>5.4.1</b> Expectations</a></li>
+<li class="chapter" data-level="5.4.2" data-path="examining-linear-relationships.html"><a href="examining-linear-relationships.html#comparing-expectations-to-data-1"><i class="fa fa-check"></i><b>5.4.2</b> Comparing expectations to data</a></li>
+<li class="chapter" data-level="5.4.3" data-path="examining-linear-relationships.html"><a href="examining-linear-relationships.html#refining-expectations"><i class="fa fa-check"></i><b>5.4.3</b> Refining expectations</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="when-do-we-stop.html"><a href="when-do-we-stop.html"><i class="fa fa-check"></i><b>5.5</b> When Do We Stop?</a><ul>
+<li class="chapter" data-level="5.5.1" data-path="when-do-we-stop.html"><a href="when-do-we-stop.html#are-you-out-of-data"><i class="fa fa-check"></i><b>5.5.1</b> Are you out of data?</a></li>
+<li class="chapter" data-level="5.5.2" data-path="when-do-we-stop.html"><a href="when-do-we-stop.html#do-you-have-enough-evidence-to-make-a-decision"><i class="fa fa-check"></i><b>5.5.2</b> Do you have enough evidence to make a decision?</a></li>
+<li class="chapter" data-level="5.5.3" data-path="when-do-we-stop.html"><a href="when-do-we-stop.html#can-you-place-your-results-in-any-larger-context"><i class="fa fa-check"></i><b>5.5.3</b> Can you place your results in any larger context?</a></li>
+<li class="chapter" data-level="5.5.4" data-path="when-do-we-stop.html"><a href="when-do-we-stop.html#are-you-out-of-time"><i class="fa fa-check"></i><b>5.5.4</b> Are you out of time?</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="summary.html"><a href="summary.html"><i class="fa fa-check"></i><b>5.6</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="chapter-inference.html"><a href="chapter-inference.html"><i class="fa fa-check"></i><b>6</b> Inference: A Primer</a><ul>
+<li class="chapter" data-level="6.1" data-path="identify-the-population.html"><a href="identify-the-population.html"><i class="fa fa-check"></i><b>6.1</b> Identify the population</a></li>
+<li class="chapter" data-level="6.2" data-path="describe-the-sampling-process.html"><a href="describe-the-sampling-process.html"><i class="fa fa-check"></i><b>6.2</b> Describe the sampling process</a></li>
+<li class="chapter" data-level="6.3" data-path="describe-a-model-for-the-population.html"><a href="describe-a-model-for-the-population.html"><i class="fa fa-check"></i><b>6.3</b> Describe a model for the population</a></li>
+<li class="chapter" data-level="6.4" data-path="a-quick-example.html"><a href="a-quick-example.html"><i class="fa fa-check"></i><b>6.4</b> A Quick Example</a></li>
+<li class="chapter" data-level="6.5" data-path="factors-affecting-the-quality-of-inference.html"><a href="factors-affecting-the-quality-of-inference.html"><i class="fa fa-check"></i><b>6.5</b> Factors Affecting the Quality of Inference</a></li>
+<li class="chapter" data-level="6.6" data-path="example-apple-music-usage.html"><a href="example-apple-music-usage.html"><i class="fa fa-check"></i><b>6.6</b> Example: Apple Music Usage</a></li>
+<li class="chapter" data-level="6.7" data-path="populations-come-in-many-forms.html"><a href="populations-come-in-many-forms.html"><i class="fa fa-check"></i><b>6.7</b> Populations Come in Many Forms</a><ul>
+<li class="chapter" data-level="6.7.1" data-path="populations-come-in-many-forms.html"><a href="populations-come-in-many-forms.html#time-series"><i class="fa fa-check"></i><b>6.7.1</b> Time series</a></li>
+<li class="chapter" data-level="6.7.2" data-path="populations-come-in-many-forms.html"><a href="populations-come-in-many-forms.html#natural-processes"><i class="fa fa-check"></i><b>6.7.2</b> Natural processes</a></li>
+<li class="chapter" data-level="6.7.3" data-path="populations-come-in-many-forms.html"><a href="populations-come-in-many-forms.html#data-as-population"><i class="fa fa-check"></i><b>6.7.3</b> Data as population</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="chapter-formal.html"><a href="chapter-formal.html"><i class="fa fa-check"></i><b>7</b> Formal Modeling</a><ul>
+<li class="chapter" data-level="7.1" data-path="what-are-the-goals-of-formal-modeling.html"><a href="what-are-the-goals-of-formal-modeling.html"><i class="fa fa-check"></i><b>7.1</b> What Are the Goals of Formal Modeling?</a></li>
+<li class="chapter" data-level="7.2" data-path="general-framework.html"><a href="general-framework.html"><i class="fa fa-check"></i><b>7.2</b> General Framework</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="general-framework.html"><a href="general-framework.html#primary-model"><i class="fa fa-check"></i><b>7.2.1</b> Primary model</a></li>
+<li class="chapter" data-level="7.2.2" data-path="general-framework.html"><a href="general-framework.html#secondary-models"><i class="fa fa-check"></i><b>7.2.2</b> Secondary models</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="associational-analyses.html"><a href="associational-analyses.html"><i class="fa fa-check"></i><b>7.3</b> Associational Analyses</a><ul>
+<li class="chapter" data-level="7.3.1" data-path="associational-analyses.html"><a href="associational-analyses.html#example-online-advertising-campaign"><i class="fa fa-check"></i><b>7.3.1</b> Example: Online advertising campaign</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="prediction-analyses.html"><a href="prediction-analyses.html"><i class="fa fa-check"></i><b>7.4</b> Prediction Analyses</a></li>
+<li class="chapter" data-level="7.5" data-path="summary-1.html"><a href="summary-1.html"><i class="fa fa-check"></i><b>7.5</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="inference-vs-prediction-implications-for-modeling-strategy.html"><a href="inference-vs-prediction-implications-for-modeling-strategy.html"><i class="fa fa-check"></i><b>8</b> Inference vs. Prediction: Implications for Modeling Strategy</a><ul>
+<li class="chapter" data-level="8.1" data-path="air-pollution-and-mortality-in-new-york-city.html"><a href="air-pollution-and-mortality-in-new-york-city.html"><i class="fa fa-check"></i><b>8.1</b> Air Pollution and Mortality in New York City</a></li>
+<li class="chapter" data-level="8.2" data-path="inferring-an-association.html"><a href="inferring-an-association.html"><i class="fa fa-check"></i><b>8.2</b> Inferring an Association</a></li>
+<li class="chapter" data-level="8.3" data-path="predicting-the-outcome.html"><a href="predicting-the-outcome.html"><i class="fa fa-check"></i><b>8.3</b> Predicting the Outcome</a></li>
+<li class="chapter" data-level="8.4" data-path="summary-2.html"><a href="summary-2.html"><i class="fa fa-check"></i><b>8.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="chapter-interpretation.html"><a href="chapter-interpretation.html"><i class="fa fa-check"></i><b>9</b> Interpreting Your Results</a><ul>
+<li class="chapter" data-level="9.1" data-path="principles-of-interpretation.html"><a href="principles-of-interpretation.html"><i class="fa fa-check"></i><b>9.1</b> Principles of Interpretation</a></li>
+<li class="chapter" data-level="9.2" data-path="case-study-non-diet-soda-consumption-and-body-mass-index.html"><a href="case-study-non-diet-soda-consumption-and-body-mass-index.html"><i class="fa fa-check"></i><b>9.2</b> Case Study: Non-diet Soda Consumption and Body Mass Index</a><ul>
+<li class="chapter" data-level="9.2.1" data-path="case-study-non-diet-soda-consumption-and-body-mass-index.html"><a href="case-study-non-diet-soda-consumption-and-body-mass-index.html#revisit-the-question"><i class="fa fa-check"></i><b>9.2.1</b> Revisit the Question</a></li>
+<li class="chapter" data-level="9.2.2" data-path="case-study-non-diet-soda-consumption-and-body-mass-index.html"><a href="case-study-non-diet-soda-consumption-and-body-mass-index.html#start-with-the-primary-model-and-assess-the-directionality-magnitude-and-uncertainty-of-the-result"><i class="fa fa-check"></i><b>9.2.2</b> Start with the primary model and assess the directionality, magnitude, and uncertainty of the result</a></li>
+<li class="chapter" data-level="9.2.3" data-path="case-study-non-diet-soda-consumption-and-body-mass-index.html"><a href="case-study-non-diet-soda-consumption-and-body-mass-index.html#develop-an-overall-interpretation-by-considering-the-totality-of-your-analyses-and-external-information"><i class="fa fa-check"></i><b>9.2.3</b> Develop an overall interpretation by considering the totality of your analyses and external information</a></li>
+<li class="chapter" data-level="9.2.4" data-path="case-study-non-diet-soda-consumption-and-body-mass-index.html"><a href="case-study-non-diet-soda-consumption-and-body-mass-index.html#implications"><i class="fa fa-check"></i><b>9.2.4</b> Implications</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="chapter-communication.html"><a href="chapter-communication.html"><i class="fa fa-check"></i><b>10</b> Communication</a><ul>
+<li class="chapter" data-level="10.1" data-path="routine-communication.html"><a href="routine-communication.html"><i class="fa fa-check"></i><b>10.1</b> Routine communication</a></li>
+<li class="chapter" data-level="10.2" data-path="the-audience.html"><a href="the-audience.html"><i class="fa fa-check"></i><b>10.2</b> The Audience</a></li>
+<li class="chapter" data-level="10.3" data-path="content.html"><a href="content.html"><i class="fa fa-check"></i><b>10.3</b> Content</a></li>
+<li class="chapter" data-level="10.4" data-path="style.html"><a href="style.html"><i class="fa fa-check"></i><b>10.4</b> Style</a></li>
+<li class="chapter" data-level="10.5" data-path="attitude.html"><a href="attitude.html"><i class="fa fa-check"></i><b>10.5</b> Attitude</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="about-the-authors.html"><a href="about-the-authors.html"><i class="fa fa-check"></i><b>11</b> About the Authors</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The Art of Data Science</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="air-pollution-and-mortality-in-new-york-city" class="section level2">
+<h2><span class="header-section-number">8.1</span> Air Pollution and Mortality in New York City</h2>
+<p>The following example shows how different types of questions and corresponding modeling approaches can lead to different conclusions. The example uses air pollution and mortality data for New York City. The data were originally used as part of the <a href="http://www.ihapss.jhsph.edu">National Morbidity, Mortality, and Air Pollution Study</a> (NMMAPS).</p>
+<p>Below is a plot of the daily mortality from all causes for the years 2001–2005.</p>
+<div class="figure"><span id="fig:unnamed-chunk-3"></span>
+<img src="images/inferencepred-unnamed-chunk-3-1.png" alt="Daily Mortality in New York City, 2001--2005" width="672" />
+<p class="caption">
+Figure 5.1: Daily Mortality in New York City, 2001–2005
+</p>
+</div>
+<p>And here is a plot of 24-hour average levels of particulate matter with aerodynamic diameter less than or equal to 10 microns (PM10).</p>
+<div class="figure"><span id="fig:unnamed-chunk-4"></span>
+<img src="images/inferencepred-unnamed-chunk-4-1.png" alt="Daily PM10 in New York City, 2001--2005" width="672" />
+<p class="caption">
+Figure 8.1: Daily PM10 in New York City, 2001–2005
+</p>
+</div>
+<p>Note that there are many fewer points on the plot above than there were on the plot of the mortality data. This is because PM10 is not measured everyday. Also note that there are negative values in the PM10 plot–this is because the PM10 data were mean-subtracted. In general, negative values of PM10 are not possible.</p>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="inference-vs-prediction-implications-for-modeling-strategy.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="inferring-an-association.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
