@@ -1,7 +1,7 @@
 ---
 title: "The Art of Data Science"
 author: "Roger D. Peng and Elizabeth Matsui"
-date: "2017-04-26"
+date: "2017-06-26"
 site: bookdown::bookdown_site
 output:
   bookdown::html_chapters:

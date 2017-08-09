@@ -230,7 +230,7 @@ We can take a look at which observations were measured at time "00:01".
 > filter(ozone, Time.Local == "13:14") %>% 
 +         select(State.Name, County.Name, Date.Local, 
 +                Time.Local, Sample.Measurement)
-# A tibble: 2 × 5
+# A tibble: 2 x 5
   State.Name County.Name Date.Local Time.Local
        <chr>       <chr>      <chr>      <chr>
 1   New York    Franklin 2014-09-30      13:14
@@ -456,7 +456,7 @@ Now, we can make a simple summary of ozone levels in the east and west of the U.
 > group_by(ozone, region) %>%
 +         summarize(mean = mean(Sample.Measurement, na.rm = TRUE),
 +                   median = median(Sample.Measurement, na.rm = TRUE))
-# A tibble: 2 × 3
+# A tibble: 2 x 3
   region       mean median
   <fctr>      <dbl>  <dbl>
 1   east 0.02995250  0.030
@@ -494,7 +494,7 @@ Recall that previously we noticed that three states had some unusually high valu
 +         group_by(region) %>%
 +         summarize(mean = mean(Sample.Measurement, na.rm = TRUE),
 +                   median = median(Sample.Measurement, na.rm = TRUE))
-# A tibble: 2 × 3
+# A tibble: 2 x 3
   region       mean median
   <fctr>      <dbl>  <dbl>
 1   east 0.03003692  0.030
