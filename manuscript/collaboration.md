@@ -1,8 +1,9 @@
 # Collaboration
 
-## The Care and Feeding of Your Scientist Collaborator
-
 We (Elizabeth and Roger) have been working together for a decade now and the story of how we started working together is perhaps a brief lesson on collaboration in and of itself. The short version is that Elizabeth emailed someone who didn’t have time to help her, so that person emailed someone else who didn’t have time, so that person emailed someone else who didn’t have time, so that person emailed Roger, who as a mere assistant professor had plenty of time! Some people are irked by this process because it feels like you’re someone’s fourth choice. But many good collaborations come about this way and it either works or it doesn’t work, regardless of where on the list you were when you were contacted.
+
+
+## The Care and Feeding of Your Scientist Collaborator
 
 Once you’ve found yourself a collaborator, either in the scientific, business, or any other domain, what should you do with this person? Here is some advice that we have accumulated over the years. In this section we may refer to things in the scientific or academic context, because that is where we have the most experience, but we believe that the ideas are general and extend to other domains where collaboration is critical.
 
