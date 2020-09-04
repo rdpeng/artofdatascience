@@ -11,7 +11,7 @@ The key things to remember are
 2. For **prediction questions** the goal is to identify a model that *best predicts* the outcome. Typically we do not place any *a priori* importance on the predictors, so long as they are good at predicting the outcome. There is no notion of "confounder" or "predictors of interest" because all predictors are potentially useful for predicting the outcome. Also, we often do not care about "how the model works" or telling a detailed story about the predictors. The key goal is to develop a model with good prediction skill and to estimate a reasonable error rate from the data. 
 
 
-## Air Pollution and Mortality in New York City
+## Air Pollution and Mortality in New York
 
 The following example shows how different types of questions and corresponding modeling approaches can lead to different conclusions. The example uses air pollution and mortality data for New York City. The data were originally used as part of the [National Morbidity, Mortality, and Air Pollution Study](http://www.ihapss.jhsph.edu) (NMMAPS).
 
@@ -39,12 +39,12 @@ Let's take a look at the bivariate association between PM10 and mortality. Here 
 There doesn't appear to be much going on there, and a simple linear regression model of the log of daily mortality and PM10 seems to confirm that.
 
 
-|            | Estimate| Std. Error|    t value| Pr(>&#124;t&#124;)|
-|:-----------|--------:|----------:|----------:|------------------:|
-|(Intercept) | 5.088843|   0.006935| 733.751382|           0.000000|
-|pm10tmean   | 0.000040|   0.000691|   0.058338|           0.953525|
+|            | Estimate| Std. Error|  t value| Pr(>&#124;t&#124;)|
+|:-----------|--------:|----------:|--------:|------------------:|
+|(Intercept) |   5.0888|     0.0069| 733.7514|             0.0000|
+|pm10        |   0.0000|     0.0007|   0.0583|             0.9535|
 
-In the table of coefficients above, the coefficient for `pm10tmean` is quite small and its standard error is relatively large. Effectively, this estimate of the association is zero.
+In the table of coefficients above, the coefficient for `pm10` is quite small and its standard error is relatively large. Effectively, this estimate of the association is zero.
 
 However, we know quite a bit about both PM10 and daily mortality, and one thing we do know is that *season* plays a large role in both variables. In particular, we know that mortality tends to be higher in the winter and lower in the summer. PM10 tends to show the reverse pattern, being higher in the summer and lower in the winter. Because season is related to *both* PM10 and mortality, it is a good candidate for a confounder and it would make sense to adjust for it in the model.
 
@@ -58,9 +58,9 @@ Here are the results for a second model, which includes both PM10 and season. Se
 |seasonQ2    |  -0.1093|     0.0167|  -6.5470|             0.0000|
 |seasonQ3    |  -0.1555|     0.0170|  -9.1618|             0.0000|
 |seasonQ4    |  -0.0603|     0.0167|  -3.6077|             0.0004|
-|pm10tmean   |   0.0015|     0.0006|   2.4348|             0.0156|
+|pm10        |   0.0015|     0.0006|   2.4348|             0.0156|
 
-Notice now that the `pm10tmean` coefficient is quite a bit larger than before and its `t value` is large, suggesting a strong association. How is this possible?
+Notice now that the `pm10` coefficient is quite a bit larger than before and its `t value` is large, suggesting a strong association. How is this possible?
 
 It turns out that we have a classic example of [Simpson's Paradox](https://en.wikipedia.org/wiki/Simpson%27s_paradox) here. The overall relationship between P10 and mortality is null, but when we account for the seasonal variation in both mortality and PM10, the association is positive. The surprising result comes from the opposite ways in which season is related to mortality and PM10.
 
@@ -79,9 +79,9 @@ In the following model we include temperature (`tmpd`) and dew point temperature
 |seasonQ4    |  -0.0315|     0.0183| -1.7213|             0.0864|
 |tmpd        |  -0.0030|     0.0013| -2.2970|             0.0224|
 |dptp        |   0.0007|     0.0010|  0.6604|             0.5096|
-|pm10tmean   |   0.0024|     0.0007|  3.5995|             0.0004|
+|pm10        |   0.0024|     0.0007|  3.5995|             0.0004|
 
-Notice that the `pm10tmean` coefficient is even bigger than it was in the previous model. There appears to still be an association between PM10 and mortality. The effect size is small, but we will discuss that later.
+Notice that the `pm10` coefficient is even bigger than it was in the previous model. There appears to still be an association between PM10 and mortality. The effect size is small, but we will discuss that later.
 
 Finally, another class of potential confounders includes other pollutants. Before we place blame on PM10 as a harmful pollutant, it's important that we examine whether there might be another pollutant that can explain what we're observing. NO2 is a good candidate because it shares some of the same sources as PM10 and is known to be related to mortality. Let's see what happens when we include that in the model.
 
@@ -96,9 +96,9 @@ Finally, another class of potential confounders includes other pollutants. Befor
 |tmpd        |  -0.0030|     0.0013| -2.3092|             0.0217|
 |dptp        |   0.0007|     0.0010|  0.6809|             0.4966|
 |no2tmean    |   0.0013|     0.0009|  1.4677|             0.1434|
-|pm10tmean   |   0.0017|     0.0008|  2.2209|             0.0273|
+|pm10        |   0.0017|     0.0008|  2.2209|             0.0273|
 
-Notice in the table of coefficients that the `no2tmean` coefficient is similar in magnitude to the `pm10tmean` coefficient, although its `t value` is not as large. The `pm10tmean` coefficient appears to be statistically significant, but it is somewhat smaller in magnitude now.
+Notice in the table of coefficients that the `no2tmean` coefficient is similar in magnitude to the `pm10` coefficient, although its `t value` is not as large. The `pm10` coefficient appears to be statistically significant, but it is somewhat smaller in magnitude now.
 
 Below is a plot of the PM10 coefficient from all four of the models that we tried.
 
@@ -115,7 +115,7 @@ Below is a variable importance plot, which is obtained after fitting a random fo
 
 ![Random Forest Variable Importance Plot for Predicting Mortality](images/inferencepred-unnamed-chunk-11-1.png)
 
-Notice that the variable `pm10tmean` comes near the bottom of the list in terms of importance. That is because it does not contribute much to predicting the outcome, mortality. Recall in the previous section that the effect size appeared to be small, meaning that it didn't really explain much variability in mortality. Predictors like temperature and dew point temperature are more useful as predictors of daily mortality. Even NO2 is a better predictor than PM10.
+Notice that the variable `pm10` comes near the bottom of the list in terms of importance. That is because it does not contribute much to predicting the outcome, mortality. Recall in the previous section that the effect size appeared to be small, meaning that it didn't really explain much variability in mortality. Predictors like temperature and dew point temperature are more useful as predictors of daily mortality. Even NO2 is a better predictor than PM10.
 
 However, just because PM10 is not a strong predictor of mortality doesn't mean that it does not have a relevant association with mortality. Given the tradeoffs that have to be made when developing a prediction model, PM10 is not high on the list of predictors that we would include--we simply cannot include every predictor.
 
