@@ -39,10 +39,10 @@ Let's take a look at the bivariate association between PM10 and mortality. Here 
 There doesn't appear to be much going on there, and a simple linear regression model of the log of daily mortality and PM10 seems to confirm that.
 
 
-|            | Estimate| Std. Error|  t value| Pr(>&#124;t&#124;)|
-|:-----------|--------:|----------:|--------:|------------------:|
-|(Intercept) |   5.0888|     0.0069| 733.7514|             0.0000|
-|pm10        |   0.0000|     0.0007|   0.0583|             0.9535|
+|            | Estimate| Std. Error| t value| Pr(>&#124;t&#124;)|
+|:-----------|--------:|----------:|-------:|------------------:|
+|(Intercept) |    5.089|      0.007| 733.751|              0.000|
+|pm10        |    0.000|      0.001|   0.058|              0.954|
 
 In the table of coefficients above, the coefficient for `pm10` is quite small and its standard error is relatively large. Effectively, this estimate of the association is zero.
 
@@ -95,10 +95,10 @@ Finally, another class of potential confounders includes other pollutants. Befor
 |seasonQ4    |  -0.0275|     0.0185| -1.4874|             0.1382|
 |tmpd        |  -0.0030|     0.0013| -2.3092|             0.0217|
 |dptp        |   0.0007|     0.0010|  0.6809|             0.4966|
-|no2tmean    |   0.0013|     0.0009|  1.4677|             0.1434|
+|no2         |   0.0013|     0.0009|  1.4677|             0.1434|
 |pm10        |   0.0017|     0.0008|  2.2209|             0.0273|
 
-Notice in the table of coefficients that the `no2tmean` coefficient is similar in magnitude to the `pm10` coefficient, although its `t value` is not as large. The `pm10` coefficient appears to be statistically significant, but it is somewhat smaller in magnitude now.
+Notice in the table of coefficients that the `no2` coefficient is similar in magnitude to the `pm10` coefficient, although its `t value` is not as large. The `pm10` coefficient appears to be statistically significant, but it is somewhat smaller in magnitude now.
 
 Below is a plot of the PM10 coefficient from all four of the models that we tried.
 
@@ -120,6 +120,7 @@ Notice that the variable `pm10` comes near the bottom of the list in terms of im
 However, just because PM10 is not a strong predictor of mortality doesn't mean that it does not have a relevant association with mortality. Given the tradeoffs that have to be made when developing a prediction model, PM10 is not high on the list of predictors that we would include--we simply cannot include every predictor.
 
 ## Frequently Asked Questions
+
 
 
 ## Summary

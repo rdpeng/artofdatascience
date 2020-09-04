@@ -24,7 +24,8 @@ The following example shows how different types of questions and corresponding m
 
 ```{r}
 ny <- readRDS("ny.rds") %>%
-        rename(pm10 = pm10tmean)
+        rename(pm10 = pm10tmean,
+               no2 = no2tmean)
 sub <- select(ny, c(date, death)) %>%
   filter(date >= "2001-01-01") %>%
   group_by(date) %>% summarize(death = sum(death))
@@ -74,7 +75,7 @@ There doesn't appear to be much going on there, and a simple linear regression m
 ```{r}
 fit0 <- lm(log(death) ~ pm10, data = ny)
 summary(fit0)$coefficients %>%
-        kable(digits = 4)
+        kable(digits = 3)
 ```
 
 In the table of coefficients above, the coefficient for `pm10` is quite small and its standard error is relatively large. Effectively, this estimate of the association is zero.
@@ -110,12 +111,12 @@ Notice that the `pm10` coefficient is even bigger than it was in the previous mo
 Finally, another class of potential confounders includes other pollutants. Before we place blame on PM10 as a harmful pollutant, it's important that we examine whether there might be another pollutant that can explain what we're observing. NO2 is a good candidate because it shares some of the same sources as PM10 and is known to be related to mortality. Let's see what happens when we include that in the model.
 
 ```{r}
-fit3 <- lm(log(death) ~ date + season + tmpd + dptp + no2tmean + pm10, data = ny)
+fit3 <- lm(log(death) ~ date + season + tmpd + dptp + no2 + pm10, data = ny)
 summary(fit3)$coefficients %>%
         kable(digits = 4)
 ```
 
-Notice in the table of coefficients that the `no2tmean` coefficient is similar in magnitude to the `pm10` coefficient, although its `t value` is not as large. The `pm10` coefficient appears to be statistically significant, but it is somewhat smaller in magnitude now.
+Notice in the table of coefficients that the `no2` coefficient is similar in magnitude to the `pm10` coefficient, although its `t value` is not as large. The `pm10` coefficient appears to be statistically significant, but it is somewhat smaller in magnitude now.
 
 Below is a plot of the PM10 coefficient from all four of the models that we tried.
 
@@ -147,7 +148,7 @@ Below is a variable importance plot, which is obtained after fitting a random fo
 ```{r, fig.cap="Random Forest Variable Importance Plot for Predicting Mortality"}
 set.seed(1)
 library(randomForest)
-rf <- randomForest(death ~ tmpd + dptp + dow + date + season + pm10 + o3tmean + no2tmean, data = ny, na.action = na.omit)
+rf <- randomForest(death ~ tmpd + dptp + dow + date + season + pm10 + o3tmean + no2, data = ny, na.action = na.omit)
 varImpPlot(rf, main = "Variable Importance")
 ```
 
@@ -156,6 +157,7 @@ Notice that the variable `pm10` comes near the bottom of the list in terms of im
 However, just because PM10 is not a strong predictor of mortality doesn't mean that it does not have a relevant association with mortality. Given the tradeoffs that have to be made when developing a prediction model, PM10 is not high on the list of predictors that we would include--we simply cannot include every predictor.
 
 ## Frequently Asked Questions
+
 
 
 ## Summary
