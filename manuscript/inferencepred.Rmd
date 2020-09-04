@@ -1,10 +1,11 @@
 # Inference vs. Prediction: Implications for Modeling Strategy
 
-```{r,message=FALSE,warning=FALSE,echo=FALSE}
+```{r,include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, 
                       comment = NA, fig.path = "images/inferencepred-")
-library(dplyr)
-library(ggplot2)
+library(tidyverse)
+library(broom)
+library(knitr)
 ```
 
 Understanding whether you're answering an inferential question versus a prediction question is an important concept because the type of question you're answering can greatly influence the modeling strategy you pursue. If you do not clearly understand which type of question you are asking, you may end up using the wrong type of modeling approach and ultimately make the wrong conclusions from your data. The purpose of this chapter is to show you what can happen when you confuse one question for another.
@@ -60,7 +61,8 @@ There doesn't appear to be much going on there, and a simple linear regression m
 
 ```{r}
 fit0 <- lm(log(death) ~ pm10tmean, data = ny)
-summary(fit0)$coefficients
+summary(fit0)$coefficients %>%
+        kable(digits = 6)
 ```
 
 In the table of coefficients above, the coefficient for `pm10tmean` is quite small and its standard error is relatively large. Effectively, this estimate of the association is zero.
@@ -72,7 +74,8 @@ Here are the results for a second model, which includes both PM10 and season. Se
 
 ```{r}
 fit1 <- lm(log(death) ~ season + pm10tmean, data = ny)
-summary(fit1)$coefficients
+summary(fit1)$coefficients %>%
+        kable(digits = 4)
 ```
 
 Notice now that the `pm10tmean` coefficient is quite a bit larger than before and its `t value` is large, suggesting a strong association. How is this possible?
@@ -86,7 +89,8 @@ In the following model we include temperature (`tmpd`) and dew point temperature
 
 ```{r}
 fit2 <- lm(log(death) ~ date + season + tmpd + dptp + pm10tmean, data = ny)
-summary(fit2)$coefficients
+summary(fit2)$coefficients %>%
+        kable(digits = 4)
 ```
 
 Notice that the `pm10tmean` coefficient is even bigger than it was in the previous model. There appears to still be an association between PM10 and mortality. The effect size is small, but we will discuss that later.
@@ -95,7 +99,8 @@ Finally, another class of potential confounders includes other pollutants. Befor
 
 ```{r}
 fit3 <- lm(log(death) ~ date + season + tmpd + dptp + no2tmean + pm10tmean, data = ny)
-summary(fit3)$coefficients
+summary(fit3)$coefficients %>%
+        kable(digits = 4)
 ```
 
 Notice in the table of coefficients that the `no2tmean` coefficient is similar in magnitude to the `pm10tmean` coefficient, although its `t value` is not as large. The `pm10tmean` coefficient appears to be statistically significant, but it is somewhat smaller in magnitude now.
@@ -137,8 +142,6 @@ varImpPlot(rf, main = "Variable Importance")
 Notice that the variable `pm10tmean` comes near the bottom of the list in terms of importance. That is because it does not contribute much to predicting the outcome, mortality. Recall in the previous section that the effect size appeared to be small, meaning that it didn't really explain much variability in mortality. Predictors like temperature and dew point temperature are more useful as predictors of daily mortality. Even NO2 is a better predictor than PM10.
 
 However, just because PM10 is not a strong predictor of mortality doesn't mean that it does not have a relevant association with mortality. Given the tradeoffs that have to be made when developing a prediction model, PM10 is not high on the list of predictors that we would include--we simply cannot include every predictor.
-
-
 
 
 ## Summary
