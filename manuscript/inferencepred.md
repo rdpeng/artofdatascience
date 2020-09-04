@@ -1,8 +1,3 @@
----
-output: 
-  html_document: 
-    keep_md: yes
----
 # Inference vs. Prediction: Implications for Modeling Strategy
 
 
