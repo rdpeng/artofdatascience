@@ -8,6 +8,7 @@ formalmodeling.md
 inferencepred.md
 Interpreting_Your_Results.md
 communication.md
+collaboration.md
 conclusion.md
 backmatter.txt
 about.md
