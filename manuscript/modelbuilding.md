@@ -15,7 +15,7 @@ One of us (Roger) recently published a book titled [_R Programming for Data Scie
 
 
 ```
-25 20 15 5 30 7 5 10 12 40 30 30 10 25 10 20 10 10 25 5
+10 20 50 20 2 20 30 5 10 15 25 10 10 40 10 20 10 1 20 20
 ```
 
 
@@ -23,7 +23,7 @@ Now suppose that someone asked you, "What do the data say?" One thing you could 
 
 The first key element of a statistical model is *data reduction*. The basic idea is you want to take the original set of numbers consisting of your dataset and transform them into a smaller set of numbers. If you originally started with 20 numbers, your model should produce a summary that is fewer than 20 numbers. The process of data reduction typically ends up with a *statistic*. Generally speaking, a statistic is any summary of the data. The sample mean, or average, is a statistic. So is the median, the standard deviation, the maximum, the minimum, and the range. Some statistics are more or less useful than others but they are all summaries of the data.
 
-Perhaps the simplest data reduction you can produce is the mean, or the simple arithmetic average, of the data, which in this case is $17.2. Going from 20 numbers to 1 number is about as much reduction as you can do in this case, so it definitely satisfies the summary element of a model.
+Perhaps the simplest data reduction you can produce is the mean, or the simple arithmetic average, of the data, which in this case is $17.4. Going from 20 numbers to 1 number is about as much reduction as you can do in this case, so it definitely satisfies the summary element of a model.
 
 
 ## Models as Expectations
@@ -37,12 +37,12 @@ Perhaps the most popular statistical model in the world is the Normal model. Thi
 
 Take the data that we described in the previous section---the amount of money 20 people were willing to pay for a hypothetical new product. The hope is that these 20 people are a representative sample of the entire population of people who might purchase this new product. If that's the case, then the information contained in the dataset can tell you something about everyone in the population.
 
-To apply the Normal model to this dataset, we just need to calculate the mean and standard deviation. In this case, the mean is $17.2 and the standard deviation is $10.39. Given those parameters, our expectation under the Normal model is that the distribution of prices that people are willing to pay looks something like this.
+To apply the Normal model to this dataset, we just need to calculate the mean and standard deviation. In this case, the mean is $17.4 and the standard deviation is $12.19. Given those parameters, our expectation under the Normal model is that the distribution of prices that people are willing to pay looks something like this.
 
 ![Normal Model for Prices](images/model-unnamed-chunk-3-1.png)
 
 
-According to the model, about 68% of the population would be willing to pay somewhere between $6.81 and $27.59 for this new product. Whether that is useful information or not depends on the specifics of the situation, which we will gloss over for the moment.
+According to the model, about 68% of the population would be willing to pay somewhere between $5.2 and $29.59 for this new product. Whether that is useful information or not depends on the specifics of the situation, which we will gloss over for the moment.
 
 You can use the statistical model to answer more complex questions if you want. For example, suppose you wanted to know "What proportion of the population would be willing to pay more than $30 for this book?" Using the properties of the Normal distribution (and a little computational help from R), we can easily do this calculation.
 
@@ -52,10 +52,10 @@ pnorm(30, mean = mean(x), sd = sd(x), lower.tail = FALSE)
 ```
 
 ```
-[1] 0.1089893
+[1] 0.1507179
 ```
 
-So about 11% of the population would be willing to pay more than $30 for the product. Again, whether this is useful to you depends on your specific goals. 
+So about 15% of the population would be willing to pay more than $30 for the product. Again, whether this is useful to you depends on your specific goals. 
 
 Note that in the picture above there is one crucial thing that is missing---the data! That's not exactly true, because we used the data to draw the picture (to calculate the mean and standard deviation of the Normal distribution), but ultimately the data do not appear directly in the plot. In this case **we are using the Normal distribution to tell us what the population looks like**, not what the data look like.
 
@@ -126,7 +126,7 @@ How do the data match your expectations now?
 
 
 
-You might ask what difference does it make which model I use to represent the population from which the data were generated? Well, for starters it might affect the kinds of predictions that you might make using the model. For example, recall before that were interested in what proportion of the population might be willing to pay at least $30 dollars for the book. Our new model says that only about 7% of the population would be willing to pay at least this amount (the Normal model claimed 11% would pay $30 or more). So different models can yield different predictions based on the same data, which may impact decisions made down the road.
+You might ask what difference does it make which model I use to represent the population from which the data were generated? Well, for starters it might affect the kinds of predictions that you might make using the model. For example, recall before that were interested in what proportion of the population might be willing to pay at least $30 dollars for the book. Our new model says that only about 11% of the population would be willing to pay at least this amount (the Normal model claimed 15% would pay $30 or more). So different models can yield different predictions based on the same data, which may impact decisions made down the road.
 
 
 

@@ -232,10 +232,10 @@ We can take a look at which observations were measured at time "00:01".
 +                Time.Local, Sample.Measurement)
 # A tibble: 2 × 5
   State.Name County.Name Date.Local Time.Local
-       <chr>       <chr>      <chr>      <chr>
-1   New York    Franklin 2014-09-30      13:14
-2   New York    Franklin 2014-09-30      13:14
-# ... with 1 more variables:
+  <chr>      <chr>       <chr>      <chr>     
+1 New York   Franklin    2014-09-30 13:14     
+2 New York   Franklin    2014-09-30 13:14     
+# … with 1 more variable:
 #   Sample.Measurement <dbl>
 ```
 
@@ -451,10 +451,10 @@ Now, we can make a simple summary of ozone levels in the east and west of the U.
 +         summarize(mean = mean(Sample.Measurement, na.rm = TRUE),
 +                   median = median(Sample.Measurement, na.rm = TRUE))
 # A tibble: 2 × 3
-  region       mean median
-  <fctr>      <dbl>  <dbl>
-1   east 0.02995250  0.030
-2   west 0.03400735  0.035
+  region   mean median
+  <fct>   <dbl>  <dbl>
+1 east   0.0300  0.03 
+2 west   0.0340  0.035
 ```
 
 Both the mean and the median ozone level are higher in the western U.S. than in the eastern U.S., by about 0.004 ppm.
@@ -486,10 +486,10 @@ Recall that previously we noticed that three states had some unusually high valu
 +         summarize(mean = mean(Sample.Measurement, na.rm = TRUE),
 +                   median = median(Sample.Measurement, na.rm = TRUE))
 # A tibble: 2 × 3
-  region       mean median
-  <fctr>      <dbl>  <dbl>
-1   east 0.03003692  0.030
-2   west 0.03406880  0.035
+  region   mean median
+  <fct>   <dbl>  <dbl>
+1 east   0.0300  0.03 
+2 west   0.0341  0.035
 ```
 
 Indeed, it seems the pattern is the same even with those 3 states removed. 

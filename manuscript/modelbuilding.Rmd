@@ -180,7 +180,8 @@ n <- nrow(ny)
 x <- rnorm(n, mean = mean(ny$temp), sd = sd(ny$temp))
 fit <- lm(ozone ~ temp, data = ny)
 y <- coef(fit)[1] + coef(fit)[2] * x + rnorm(n, sd = summary(fit)$sigma)
-qplot(x, y, main = "Simulated Data") + geom_smooth(method = "lm", se = FALSE, lwd = 2)
+qplot(x, y, main = "Simulated Data") + 
+        geom_smooth(method = "lm", se = FALSE, lwd = 2, formula = "y ~ x")
 ```
 
 Note that if you choose any point on the blue line, there is roughly the same number of points above the line as there are below the line (this is also referred to as unbiased errors). Also, the points on the scatterplot appear to increase linearly as you move towards the right on the x-axis, even if there is a quite a bit of noise/scatter along the line.
@@ -194,7 +195,8 @@ If we are right about our linear model, and that is the model that characterizes
 Here is the picture of the actual ozone and temperature data in New York City for the year 1999. On top of the scatterplot of the data, we've plotted the fitted linear regression line estimated using the data.
 
 ```{r,fig.cap="Linear Model for Ozone and Temperature"}
-qplot(temp, ozone, data = ny) + geom_smooth(method = "lm", lwd = 2, se = FALSE)
+qplot(temp, ozone, data = ny) + 
+        geom_smooth(method = "lm", lwd = 2, se = FALSE, formula = "y ~ x")
 ```
 
 How does this picture compare to the picture that you were expecting to see?
@@ -213,7 +215,8 @@ From the picture above, it appears that the relationship between temperature and
 The easiest way we can capture this revised expectation is with a smoother, in this case, a loess smoother.
 
 ```{r,fig.cap="Loess Smoother for Ozone and Temperature"}
-qplot(temp, ozone, data = ny) + geom_smooth(method = "loess", lwd = 2, se = FALSE)
+qplot(temp, ozone, data = ny) + 
+        geom_smooth(method = "loess", lwd = 2, se = FALSE, formula = "y ~ x")
 ```
 
 This plot shows a different picture--the relationship is slowly increasing up until about 75 degrees, and then sharply increases afterwards. Around 90 degrees, there's a suggestion that the relationship levels off again. 
