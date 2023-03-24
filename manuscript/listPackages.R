@@ -10,7 +10,7 @@ local({
         int <- installed.packages()[, 1]
         need <- setdiff(pkgs, int)
         if(length(need) > 0L) {
-                install.packages(need)
+                install.packages(need, dependencies = TRUE)
         }
 })
 

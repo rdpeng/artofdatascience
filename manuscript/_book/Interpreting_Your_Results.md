@@ -92,7 +92,15 @@ It is this concept---**the probability that your sample reflects the answer for 
 One tool that provides a more continuous measure of uncertainty is the confidence interval.  A confidence interval is a range of values that contains your sample result and you have some amount of confidence that it also contains the true result for the overall population. Most often statistical modeling software provides 95% confidence intervals, so that if the 95% CI for the sample estimate of 0.28 kg/m^2^ from above is 0.15--0.42 kg/m^2^, the approximate interpretation is that you can be 95% confident that the true result for the overall population is somewhere between 0.15 and 0.42 kg/m^2^.    
 
 <div class="rmdnote">
-<p>A more precise definition of the 95% confidence interval would be that over repeated samples, if we were to conduct this experiment many times (each time collecting a dataset of the same size) then a confidence interval constructed in this manner would cover the truth 95% of the time. It's important to realize that because the confidence interval is constructed from the data, the <em>interval itself is random</em>. Therefore, if we were to collect new data, the interval we'd construct would be slightly different. However, the truth, meaning the population value of the parameter, would always remain the same.</p>
+<p>A more precise definition of the 95% confidence interval would be
+that over repeated samples, if we were to conduct this experiment many
+times (each time collecting a dataset of the same size) then a
+confidence interval constructed in this manner would cover the truth 95%
+of the time. It’s important to realize that because the confidence
+interval is constructed from the data, the <em>interval itself is
+random</em>. Therefore, if we were to collect new data, the interval
+we’d construct would be slightly different. However, the truth, meaning
+the population value of the parameter, would always remain the same.</p>
 </div>
 
 Another tool for measuring uncertainty is, of course, the p-value, which simply is the probability of getting the sample result of 0.28 kg/m^2^ (or more extreme) when the true relationship between non-diet soda consumption and BMI in the overall population is 0. Although the p-value is a continuous measure of uncertainty, many people consider a p-value of <0.05, which indicates that there is a less than 5% probability of observing the sample result (or a more extreme result) when there is no relationship in the overall population, as "statistically significant".  This cutpoint is arbitrary and tells us very little about the *degree* of uncertainty or about where the true answer for the overall population lies. Focusing primarily on the p-value is a risky approach to interpreting uncertainty because it can lead to ignoring more important information needed for thoughtful and accurate interpretation of your results. 

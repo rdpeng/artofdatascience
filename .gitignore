@@ -2,3 +2,7 @@ _book
 _bookdown_files
 artofdatascience.rds
 rsconnect
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata

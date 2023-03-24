@@ -230,13 +230,13 @@ We can take a look at which observations were measured at time "00:01".
 > filter(ozone, Time.Local == "13:14") %>% 
 +         select(State.Name, County.Name, Date.Local, 
 +                Time.Local, Sample.Measurement)
-# A tibble: 2 x 5
-  State.Name County.Name Date.Local Time.Local
-       <chr>       <chr>      <chr>      <chr>
-1   New York    Franklin 2014-09-30      13:14
-2   New York    Franklin 2014-09-30      13:14
-# ... with 1 more variables:
-#   Sample.Measurement <dbl>
+# A tibble: 2 × 5
+  State.Name County.Name Date.Lo…¹ Time.…² Sampl…³
+  <chr>      <chr>       <chr>     <chr>     <dbl>
+1 New York   Franklin    2014-09-… 13:14     0.013
+2 New York   Franklin    2014-09-… 13:14     0.012
+# … with abbreviated variable names ¹​Date.Local,
+#   ²​Time.Local, ³​Sample.Measurement
 ```
 
 We can see that it's a monitor in Franklin County, New York and that the measurements were taken on September 30, 2014. What if we just pulled all of the measurements taken at this monitor on this date?
@@ -456,11 +456,11 @@ Now, we can make a simple summary of ozone levels in the east and west of the U.
 > group_by(ozone, region) %>%
 +         summarize(mean = mean(Sample.Measurement, na.rm = TRUE),
 +                   median = median(Sample.Measurement, na.rm = TRUE))
-# A tibble: 2 x 3
-  region       mean median
-  <fctr>      <dbl>  <dbl>
-1   east 0.02995250  0.030
-2   west 0.03400735  0.035
+# A tibble: 2 × 3
+  region   mean median
+  <fct>   <dbl>  <dbl>
+1 east   0.0300  0.03 
+2 west   0.0340  0.035
 ```
 
 Both the mean and the median ozone level are higher in the western U.S. than in the eastern U.S., by about 0.004 ppm.
@@ -494,11 +494,11 @@ Recall that previously we noticed that three states had some unusually high valu
 +         group_by(region) %>%
 +         summarize(mean = mean(Sample.Measurement, na.rm = TRUE),
 +                   median = median(Sample.Measurement, na.rm = TRUE))
-# A tibble: 2 x 3
-  region       mean median
-  <fctr>      <dbl>  <dbl>
-1   east 0.03003692  0.030
-2   west 0.03406880  0.035
+# A tibble: 2 × 3
+  region   mean median
+  <fct>   <dbl>  <dbl>
+1 east   0.0300  0.03 
+2 west   0.0341  0.035
 ```
 
 Indeed, it seems the pattern is the same even with those 3 states removed. 

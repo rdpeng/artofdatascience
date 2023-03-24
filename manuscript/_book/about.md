@@ -1,23 +1,5 @@
 # About the Authors
 
-**Roger D. Peng** is a Professor of Biostatistics at the
-Johns Hopkins Bloomberg School of Public Health. He is also a
-Co-Founder of the [Johns Hopkins Data Science
-Specialization](http://www.coursera.org/specialization/jhudatascience/1),
-which has enrolled over 1.5 million students, the [Johns Hopkins
-Executive Data Science
-Specialization](https://www.coursera.org/specializations/executive-data-science),
-the [Simply Statistics blog](http://simplystatistics.org/) where he
-writes about statistics and data science for the general public, and
-the [Not So Standard Deviations](https://soundcloud.com/nssd-podcast)
-podcast. Roger can be found on Twitter and GitHub under the user name
-[@rdpeng](https://twitter.com/rdpeng).
+**Roger D. Peng** is a Professor of Biostatistics at the Johns Hopkins Bloomberg School of Public Health where his research focuses on the development of statistical methods for addressing environmental health problems. He is the author of the popular book *[R Programming for Data Science](https://leanpub.com/rprogramming)* and nine other books on data science and statistics. He is also the co-creator of the Johns Hopkins Data Science Specialization, the Simply Statistics blog where he writes about statistics for the public, the [Not So Standard Deviations](https://nssdeviations.com) podcast with Hilary Parker, and [The Effort Report](https://effortreport.libsyn.com) podcast with Elizabeth Matsui. Roger is a Fellow of the American Statistical Association and is the recipient of the Mortimer Spiegelman Award from the American Public Health Association, which honors a statistician who has made outstanding contributions to public health. He can be found on Twitter and GitHub at @rdpeng.
 
-**Elizabeth Matsui** is a Professor of Pediatrics, Epidemiology and
-  Environmental Health Sciences at Johns Hopkins University and a
-  practicing pediatric allergist/immunologist.  She directs a data
-  management and analysis center with Dr. Peng that supports
-  epidemiologic studies and clinical trials and is co-founder of
-  [Skybrude Consulting, LLC](http://skybrudeconsulting.com), a data
-  science consulting firm. Elizabeth can be found on Twitter
-  [@eliza68](https://twitter.com/eliza68).
+**Elizabeth Matsui** is a Professor of Population Health and Pediatrics at Dell Medical School at the University of Texas, Austin and an Adjunct Professor of Pediatrics at Johns Hopkins University. She is also a practicing pediatric allergist/immunologist and epidemiologist and directs a research program focused on environmental exposures and lung health. Elizabeth can be found on Twitter at [@elizabethmatsui](https://twitter.com/elizabethmatsui).
