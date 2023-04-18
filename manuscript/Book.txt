@@ -6,6 +6,7 @@ modelbuilding.md
 inference.md
 formalmodeling.md
 inferencepred.md
+causal.md
 Interpreting_Your_Results.md
 communication.md
 collaboration.md
