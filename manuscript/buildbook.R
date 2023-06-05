@@ -16,7 +16,8 @@ for(i in seq_along(chap.rmd)) {
                 message("knitting ", chap.rmd[i], "...")
                 knit(chap.rmd[i], quiet = TRUE)
 
-                if(chap.rmd[i] == "formalmodeling.Rmd")
+                if(chap.rmd[i] %in% c("formalmodeling.Rmd", 
+                                      "causalinference.md"))
                         fixmath(chapters[i])
                 if(chap.rmd[i] == "inference.Rmd")
                         system(sprintf("./equation.pl %s", chapters[i]))
